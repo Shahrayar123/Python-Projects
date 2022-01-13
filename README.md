@@ -1,12 +1,12 @@
-# Python-Projects
-## Basic
-### Good for beginners
+# Python-Projects 🐍
+## These are some cool Basic Python Projects For Beginners.
 
-### Basics python projects for beginners , include miscellaneous games like  
-    -Tic-Tac-Toe
-    - Hangman game
-    - Turtle crossing Capstone Game
-A student  management system is also available. 
-You can also schedule Whatsapp messages by using one of the projects in this repository. 
+### Basics python projects for beginners, include *Miscellaneous Games* like-  
+1. Tic-Tac-Toe
+2. Hangman game
+3. Turtle crossing Capstone Game
+4. Student Management System.
+
+***You can also schedule Whatsapp messages by using one of the projects in this repository.***
 
 
