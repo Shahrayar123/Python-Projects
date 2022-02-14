@@ -31,7 +31,7 @@ print("ALL ENCODING FOUND!!!")
 
 
 def attendance(name):
-    with open('Attendence.csv', 'r+') as f:
+    with open('Attendance.csv', 'r+') as f:
         myDataList = f.readlines()
         nameList = []
         for line in myDataList:
