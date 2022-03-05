@@ -5,7 +5,8 @@
 1. Tic-Tac-Toe
 2. Hangman game
 3. Turtle crossing Capstone Game
-4. Student Management System.
+4. Student Management System
+5. QR Code generator
 
 ***You can also schedule Whatsapp messages by using one of the projects in this repository.***
 
