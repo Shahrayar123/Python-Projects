@@ -9,18 +9,29 @@ def insertLetter(letter,pos):
 def spaceIsfree(pos):
    return board[pos] == ' '
 
+def line(typeOfLine,board)
+    if typeOfLine == "vertical" and not board:
+        print("    |   |    ")
+    elif typeOfLine == "vertical" and board:
+            print(" " + board[1] + " | " + board[2] + " | " + board[3])
+            print(" " + board[4] + " | " + board[5] + " | " + board[6])
+            print(" " + board[7] + " | " + board[8] + " | " + board[9])
+    if typeOfLine == "horizontal" and not board:
+        print("-----------")
+    
+
 def printBoard(board):
-    print("   |   |   ")
-    print(" " + board[1] + " | "+ board[2] + " | " + board[3])
-    print("   |   |   ")
-    print("-----------")
-    print("   |   |   ")
-    print(" " + board[4] + " | "+ board[5]+ " | " + board[6])
-    print("   |   |   ")
-    print("-----------")
-    print("   |   |   ")
-    print(" " + board[7] + " | " + board[8] + " | " + board[9])
-    print("   |   |   ")
+    line("vertical")
+    line("vertical",board)
+    line("vertical")
+    line("horizontal")
+    line("vertical")
+    line("vertical",board)
+    line("vertical")
+    line("horizontal")
+    line("vertical")
+    line("vertical",board)
+    line("vertical")
 
 def isBoardFull(board):
     return not board.count(" ") > 1
@@ -33,7 +44,7 @@ def userMove():
     run = True
 
     while run:
-        pos = input("Enter a position between 1 to 9: ")
+        pos = input("Enter a position in-between 1 to 9:")
 
         try:
             pos = int(pos)
@@ -42,13 +53,13 @@ def userMove():
                     run = False
                     insertLetter("X" , pos)
                 else:
-                    print("Sorry this space is occupied")
+                    print("Sorry, this space is occupied.")
 
             else:
-                print("Please enter a number range between 1 to 9")
+                print("Please enter a number in-between 1 to 9:")
 
         except:
-            print("Please enter a number ")
+            print("Please enter a number.")
 
 def compMove():
     possibleMoves = [x for x,letter in enumerate(board) if letter == " " and x != 0]
@@ -77,6 +88,7 @@ def compMove():
         return move
 
     edgeOpen = []
+    
     for i in possibleMoves:
         if i in [2,4,6,8]:
             edgeOpen.append(i)
@@ -112,7 +124,7 @@ def main():
 
             else:
                 insertLetter("O", move)
-                print(f"Computer place O on board position {move}")
+                print(f"Computer placed O on board position {move}")
                 printBoard(board)
 
         else:
@@ -124,7 +136,7 @@ def main():
 
 
 while True:
-    choice = input("Do you want to play Tic Tac Toe? (Y/N)")
+    choice = input("Do you want to play Tic Tac Toe (Y/N)?")
     if choice.lower() == 'y':
         board = [" " for i in range(10)]
         print("-----------------------------------------")
