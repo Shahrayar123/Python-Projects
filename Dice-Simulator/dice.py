@@ -48,11 +48,11 @@ def roll_dice():
         print("-----------")
 
 
-print("                         Dics Simulator                  ")
+print("                         Dice Simulator                  ")
 x = 'y'
 while x.lower() == "y":
     roll_dice()             # function call
-    choice = input("Do you want to play again (y/n): ")       # choice from user
+    choice = input("Do you want to play again? (y/n): ")       # choice from user
 
     if choice.lower() == "n":
         exit(0)
