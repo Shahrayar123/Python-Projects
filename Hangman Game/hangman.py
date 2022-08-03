@@ -25,7 +25,7 @@ def hangman():
         if guess in alphabets:
             guess_made = guess_made + guess
         else:
-            guess = input("Enter the valid character: ")
+            guess = input("Enter a valid character: ")
 
         if guess not in WORD:
             chance -= 1
@@ -75,14 +75,14 @@ def hangman():
                 print("     / \     ")
             if chance == 1:
                 print("1 turns left")
-                print("last breating...")
+                print("last breath...")
                 print("\n---------------------------- ")
                 print("     \O/ __|  ")
                 print("      |      ")
                 print("     / \     ")
 
             if chance == 0:
-                print("You loss that man")
+                print("You lost that man")
                 print("Game Over")
                 print("      O____|  ")
                 print("     /|\      ")
