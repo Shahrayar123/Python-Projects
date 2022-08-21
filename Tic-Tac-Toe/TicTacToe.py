@@ -1,6 +1,3 @@
-board = [' ' for i in range(10)]
-
-
 def insertletter(letter, pos):
     board[pos] = letter
 
@@ -9,22 +6,22 @@ def spaceisfree(pos):
     return board[pos] == ' '
 
 
-def printboard(board):
+def printboard(a_board):
     print("   |   |   ")
-    print(" " + board[7] + " | " + board[8] + " | " + board[9])
-    print("   |   |   ")
-    print("-----------")
-    print("   |   |   ")
-    print(" " + board[4] + " | " + board[5] + " | " + board[6])
+    print(" " + a_board[7] + " | " + a_board[8] + " | " + a_board[9])
     print("   |   |   ")
     print("-----------")
     print("   |   |   ")
-    print(" " + board[1] + " | " + board[2] + " | " + board[3])
+    print(" " + a_board[4] + " | " + a_board[5] + " | " + a_board[6])
+    print("   |   |   ")
+    print("-----------")
+    print("   |   |   ")
+    print(" " + a_board[1] + " | " + a_board[2] + " | " + a_board[3])
     print("   |   |   ")
 
 
-def isboardfull(board):
-    if board.count(" ") > 1:
+def isboardfull(count_board):
+    if count_board.count(" ") > 1:
         return False
     else:
         return True
@@ -61,7 +58,7 @@ def usermove():
             else:
                 print("Please enter a number range between 1 to 9")
 
-        except:
+        except ValueError:
             print("Please enter a number ")
 
 
