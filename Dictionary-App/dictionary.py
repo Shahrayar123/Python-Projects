@@ -3,18 +3,20 @@ from PyDictionary import PyDictionary
 dictionary = PyDictionary()
 
 
-def check_meaning(word):         # if user want to check meaning of word
-    return dictionary.meaning(word)
+def check_meaning(*args):         # if user want to check meaning of word
+    return dictionary.meaning(args)
 
-def get_antonym(word):         # if user want to check antonym of word
-    return dictionary.antonym(word)
 
-def get_synonym(word):         # if user want to check synonym of word
-    return dictionary.synonym(word)
+def get_antonym(*args):         # if user want to check antonym of word
+    return dictionary.antonym(args)
 
-def translate(word,language):     # if user want to translate word into other language
-    return dictionary.translate(word,language)
 
+def get_synonym(*args):         # if user want to check synonym of word
+    return dictionary.synonym(args)
+
+
+def translate(*args, **kwargs):     # if user want to translate word into other language
+    return dictionary.translate(args, kwargs)
 
 
 def menu():
@@ -32,7 +34,7 @@ Enter 0 to the close dictionary
     return choice
 
 
-while(True):
+while True:
     word = input("\nEnter a word: ")
     user_choice = menu()
     match user_choice:
@@ -61,14 +63,15 @@ For HINDI language code is hi
         case _:
             print("Invalid choice!")
 
-#-------------------------------------------------------------
+# ------------------------------------------------------------
 
 # Next tasks:
 # 1- is to make this program in such a way that if word not exist then do something
-# 2- also if user enter wrong word by mistake (for example if user want to enter ""happy"" but type "Haappyy") then do something
+# 2- also if user enter wrong word by mistake (for example if user want to enter ""happy"" but type "Haappyy") then do
+# something
+
 # 3- task number 2 is with get_close_matches() for difflib library
 # 4- then make GUI application of this
 
-#-------------------------------------------------------------
-
+# -------------------------------------------------------------
 
