@@ -30,18 +30,18 @@ encode_list_Known = encodings(Images)
 print("ALL ENCODING FOUND!!!")
 
 
-def attendance(name):
+def attendance(*args):
     with open('Attendence.csv', 'r+') as f:
-        myDataList = f.readlines()
-        nameList = []
-        for line in myDataList:
+        mydatalist = f.readlines()
+        namelist = []
+        for line in mydatalist:
             entry = line.split(',')
-            nameList.append(entry[0])
-        if name not in nameList:
+            namelist.append(entry[0])
+        if args not in namelist:
             time_now = datetime.now()
-            tStr = time_now.strftime('%H:%M:%S')
-            dStr = time_now.strftime('%d/%m/%Y')
-            f.writelines(f'\n{name},{tStr},{dStr}')
+            tstr = time_now.strftime('%H:%M:%S')
+            dstr = time_now.strftime('%d/%m/%Y')
+            f.writelines(f'\n{args},{tstr},{dstr}')
 
 
 cap = cv2.VideoCapture(0)
@@ -56,14 +56,14 @@ while True:
 
     for encodeFace, faceLoc in zip(encode_currentframe, faces_currentframe):
         matches = face_recognition.compare_faces(encode_list_Known, encodeFace)
-        faceDistance = face_recognition.face_distance(encode_list_Known, encodeFace)
+        facedistance = face_recognition.face_distance(encode_list_Known, encodeFace)
 
-        matchIndex = np.argmin(faceDistance)
+        matchIndex = np.argmin(facedistance)
 
         if matches[matchIndex]:
             name = PersonName[matchIndex].upper()
             y1, x2, y2, x1 = faceLoc
-            #y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
+            # y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
             cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
             cv2.rectangle(frame, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
             cv2.putText(frame, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
