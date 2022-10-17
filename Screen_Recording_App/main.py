@@ -2,12 +2,11 @@ import cv2
 import numpy as np
 import pyautogui
 
-# Get the size of the screen using pyautogui
 SCREEN_SIZE = tuple(pyautogui.size())
 
 # Define the codec and create VideoWriter object
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-out = cv2.VideoWriter('output.avi', fourcc, 20.0, (SCREEN_SIZE))
+out = cv2.VideoWriter('video.avi', fourcc, 20.0, (SCREEN_SIZE))
 webcam = cv2.VideoCapture(0)
 
 while True:
