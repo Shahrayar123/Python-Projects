@@ -13,7 +13,7 @@ def hangman():
             if letter in guess_made:
                 main += letter
             else:
-                main = main +"_"+" "
+                main  += "_"+" "
 
         if main == WORD:
             print("Letter is: "+ main)
@@ -23,7 +23,7 @@ def hangman():
         guess = input("Guess the word "+ main)
 
         if guess in alphabets:
-            guess_made = guess_made + guess
+            guess_made += guess
         else:
             guess = input("Enter the valid character: ")
 
@@ -35,7 +35,7 @@ def hangman():
                 print("\n---------------------------- ")
 
             if chance == 8:
-                print("9 turns left")
+                print("8 turns left")
                 print("\n---------------------------- ")
                 print("      O     ")
             if chance == 7:
