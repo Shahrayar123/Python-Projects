@@ -1,7 +1,7 @@
-import random
+from random import choice
 
 def hangman():
-    WORD = random.choice(["pencil","pen","superman","glasses","mobile","calculator","laptop","book","person","animal"])
+    WORD = choice(["pencil","pen","superman","glasses","mobile","calculator","laptop","book","person","animal"])
     # print(WORD)
     alphabets = "abcdefghijklmnopqrstuvwxyz"
     chance = 10
