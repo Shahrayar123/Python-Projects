@@ -21,6 +21,7 @@ This repository has the following Projects.
 - SNAKE
 - Number Guessing Game
 - Rock Paper Scissors Game
+- Sudoku-Solver
 
 ### OpenCV projects.
 
