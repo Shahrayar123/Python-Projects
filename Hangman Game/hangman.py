@@ -1,33 +1,49 @@
+""" The random module help us to generate random numbers or random choice from an iterable """
 import random
 
-def hangman():
-    WORD = random.choice(["pencil","pen","superman","glasses","mobile","calculator","laptop","book","person","animal"])
-    # print(WORD)
+
+def hangman(): # pylint:disable= too-many-branches, too-many-statements
+    """This function is used to play hangman game"""
+    chosen_word = random.choice(
+        [
+            "pencil",
+            "pen",
+            "superman",
+            "glasses",
+            "mobile",
+            "calculator",
+            "laptop",
+            "book",
+            "person",
+            "animal",
+        ]
+    )
+    # print(chosen_word)
     alphabets = "abcdefghijklmnopqrstuvwxyz"
     chance = 10
     guess_made = ""
 
-    while len(WORD) > 0:
+    while len(chosen_word) > 0:
         main = ""
-        for letter in WORD:
+        for letter in chosen_word:
             if letter in guess_made:
                 main += letter
             else:
-                main = main +"_"+" "
+                main = main + "_" + " "
 
-        if main == WORD:
-            print("Letter is: "+ main)
+        if main == chosen_word:
+            print("Letter is: " + main)
             print("You win! ")
             break
 
-        guess = input("Guess the word "+ main)
+        guess = input("Guess the chosen_word " + main)
 
         if guess in alphabets:
             guess_made = guess_made + guess
         else:
             guess = input("Enter the valid character: ")
 
-        if guess not in WORD:
+        if guess not in chosen_word:
             chance -= 1
 
             if chance == 9:
@@ -54,45 +70,44 @@ def hangman():
                 print("\n---------------------------- ")
                 print("      O     ")
                 print("      |      ")
-                print("     / \     ")
+                print("     / \\     ")
             if chance == 4:
                 print("4 turns left")
                 print("\n---------------------------- ")
-                print("     \O     ")
+                print("    \\O     ")
                 print("      |      ")
-                print("     / \     ")
+                print("     / \\    ")
             if chance == 3:
                 print("3 turns left")
                 print("\n---------------------------- ")
-                print("     \O/   ")
+                print("    \\O/   ")
                 print("      |      ")
-                print("     / \     ")
+                print("     / \\     ")
             if chance == 2:
                 print("2 turns left")
                 print("\n---------------------------- ")
-                print("     \O/  |  ")
+                print("    \\O/  |  ")
                 print("      |      ")
-                print("     / \     ")
+                print("     / \\     ")
             if chance == 1:
                 print("1 turns left")
                 print("last breating...")
                 print("\n---------------------------- ")
-                print("     \O/ __|  ")
+                print("    \\O/ __|  ")
                 print("      |      ")
-                print("     / \     ")
+                print("     / \\     ")
 
             if chance == 0:
                 print("You loss that man")
                 print("Game Over")
                 print("      O____|  ")
-                print("     /|\      ")
-                print("     / \     ")
+                print("     /|\\      ")
+                print("     / \\     ")
 
                 break
 
 
-
 name = input("Hey there! What is your name: ")
-print(name+" lets play a game")
+print(name + " lets play a game")
 print("\n--------------------------------------\n")
 hangman()
