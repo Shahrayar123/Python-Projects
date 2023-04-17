@@ -5,6 +5,7 @@ from tkinter import *
 import time
 import pyqrcode
 
+# This is the main generator
 def gen_qr():
     global qr, img
     qr = pyqrcode.QRCode(con.get())
@@ -12,6 +13,7 @@ def gen_qr():
     img = BitmapImage(data=qr_xbm, foreground='black', background='white')
     l4.config(image=img)
 
+# this stores the generated image locally
 def save():
     gen_qr()
     tme = time.time()
