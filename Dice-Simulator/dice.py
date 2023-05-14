@@ -85,7 +85,15 @@ roll = True
 print("\n" + " DICE SIMULATOR ".center(60, "#") + "\n")
 
 # user input
-num_dice_input = input("How many dice do you want to use? (choose 1-10) ")
+num_dice_input = None
+# check if the input is a number form 1-10, otherwise ask to re-enter
+while num_dice_input is None:
+    num_dice_input = input("How many dice do you want to use? (choose 1-10) ")
+    if num_dice_input in {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}:
+        num_dice_input = int(num_dice_input)
+    else:
+        print("Incorrect input. Please re-enter a number from 1 to 10.")
+        num_dice_input = None
 
 # user can roll till satisfaction
 while roll:
