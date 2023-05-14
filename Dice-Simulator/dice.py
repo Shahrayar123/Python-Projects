@@ -1,6 +1,6 @@
 import random       # also do with numpy (from numpy import random)
 
-# create dictionary with all the dice ACSII art 
+# create dictionary with all the dice ACSII art (visuals for short)
 dice_vis = {
     1: (
         "-----------",
@@ -8,60 +8,63 @@ dice_vis = {
         "|    0    |",
         "|         |",
         "-----------"
-    ),
+        ),
     2: (
         "-----------",
         "| 0       |",
         "|         |",
         "|       0 |",
         "-----------"
-    ),
+        ),
     3: (
         "-----------",
         "|       0 |",
         "|    0    |",
         "| 0       |",
         "-----------"
-    ),
+        ),
     4: (
         "-----------",
         "| 0     0 |",
         "|         |",
         "| 0     0 |",
         "-----------"
-    ),
+        ),
     5: (
         "-----------",
         "| 0     0 |",
         "|    0    |",
         "| 0     0 |",
         "-----------"
-    ),
+        ),
     6: (
         "-----------",
         "| 0     0 |",
         "| 0     0 |",
         "| 0     0 |",
         "-----------"
-    ),
+        )
 }
 
 
 # ------------ function definition
 
-def roll_dice(num_of_dice):
+# number of dice to roll -> list with the resulting rolls
+def roll_dice(num_of_dice:int):
     roll_results = []
     for _ in range(num_of_dice):
         roll = random.randint(1, 6)
         roll_results.append(roll)
     return roll_results
 
-def combine_faces(dice_values):
+# list of rolls -> string that combines all the dice visuals into one string to be printed
+def combine_faces(dice_values:list):
+    # first get visuals individually 
     dice_faces = []
     for value in dice_values:
         dice_faces.append(dice_vis[value])
     
-
+    # then combine into one
     dice_faces_rows = []
     for row_idx in range(5):
         row_components = []
@@ -75,28 +78,25 @@ def combine_faces(dice_values):
 
 #------------- main block
 
-print("                         Dics Simulator                  ")
-num_dice_input = input("How many dice do you want to use? (choose 1-5) ")
+#setup for couniuous rolling
+roll = True
 
-# roll the dice chosen number of times
-all_rolls = roll_dice(int(num_dice_input))
+# initial print
+print("\n" + " DICE SIMULATOR ".center(60, "#") + "\n")
 
-# print all faces for chosen numbers in one line
-for i in combine_faces(all_rolls):
-    print(i)
+# user input
+num_dice_input = input("How many dice do you want to use? (choose 1-10) ")
 
+# user can roll till satisfaction
+while roll:
+    # roll the dice chosen number of times
+    all_rolls = roll_dice(int(num_dice_input))
 
-"""
-x = 'y'
-while x.lower() == "y":
-    roll_dice()             # function call
-    choice = input("Do you want to play again (y/n): ")       # choice from user
+    # print all faces for chosen numbers in one line
+    print(" RESULT ".center(60, "~"))
+    for i in combine_faces(all_rolls):
+        print(i)
 
-    if choice.lower() == "n":
-        exit(0)
-        
-"""
-
-
-
-
+    next_roll = input("Do you want to roll again? (y/n): ")
+    if next_roll.lower() == "n":
+        roll = False
