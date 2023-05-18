@@ -1,33 +1,62 @@
+# IMPORT ALL LIBRARIES
+import requests
 import random
+from lxml import etree
+
+alphabetChoice = random.choice(["a","b","c","d","e","f","g","h","i"])
+columnChoice = random.choice(range(1, 3))
+wordChoice = random.choice(range(1, 10))
+
+def checkName(name):
+    if name == "":
+        print("Sorry, you did not enter your name")
+        return 0
+    else:
+        print("\n--------------------------------------\n")
+        return 1
 
 def hangman():
-    WORD = random.choice(["pencil","pen","superman","glasses","mobile","calculator","laptop","book","person","animal"])
+    # Define the URL and XPath
+    url = f"https://randomword.com/words/{alphabetChoice}.html"
+    xpath = f"/html/body/div[1]/div[2]/div/div/div[1]/div[2]/ul[1]/li[{wordChoice}]"
+
+    # Send a GET request to the website
+    response = requests.get(url)
+    html_content = response.content
+
+    # Parse the HTML content
+    tree = etree.HTML(html_content)
+
+    # Extract the desired element using the XPath
+    word = tree.xpath(xpath)[0].text.strip()
     # print(WORD)
     alphabets = "abcdefghijklmnopqrstuvwxyz"
     chance = 10
     guess_made = ""
 
-    while len(WORD) > 0:
+    while len(word) > 0:
         main = ""
-        for letter in WORD:
+        for letter in word:
             if letter in guess_made:
                 main += letter
             else:
                 main = main +"_"+" "
 
-        if main == WORD:
+        if main == word:
             print("Letter is: "+ main)
             print("You win! ")
             break
 
-        guess = input("Guess the word "+ main)
+        print(f"Guess the word {main}")
+        guess = input("\n")
 
         if guess in alphabets:
             guess_made = guess_made + guess
         else:
-            guess = input("Enter the valid character: ")
+            guess = input("Enter the valid character:\n")
 
-        if guess not in WORD:
+        if guess not in word:
+            print(word)
             chance -= 1
 
             if chance == 9:
@@ -35,7 +64,7 @@ def hangman():
                 print("\n---------------------------- ")
 
             if chance == 8:
-                print("9 turns left")
+                print("8 turns left")
                 print("\n---------------------------- ")
                 print("      O     ")
             if chance == 7:
@@ -82,7 +111,7 @@ def hangman():
                 print("     / \     ")
 
             if chance == 0:
-                print("You loss that man")
+                print(f"You loss that man. The answer was {word}")
                 print("Game Over")
                 print("      O____|  ")
                 print("     /|\      ")
@@ -91,8 +120,10 @@ def hangman():
                 break
 
 
-
 name = input("Hey there! What is your name: ")
-print(name+" lets play a game")
-print("\n--------------------------------------\n")
-hangman()
+
+if checkName(name):
+    print(name+" lets play a game")
+    hangman()
+else:
+    pass
