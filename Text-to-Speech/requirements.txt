@@ -1,0 +1,4 @@
+tkinter
+pyttsx3
+espeak-ng  # Only if using the espeak driver
+
