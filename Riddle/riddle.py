@@ -11,8 +11,6 @@ riddles = {
     "What has a head and a tail, but no body or legs?": "A coin",
     "What color can you eat?": "Orange",
     "What has many words but never speaks?": "A book"
-
-
 }
 
 riddle_keys = list(riddles.keys())  # Convert the dictionary keys into a list.
