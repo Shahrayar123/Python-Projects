@@ -7,7 +7,12 @@ riddles = {
     "I am always hungry, I must always be fed. The finger I touch, will soon turn red. What am I?": "Fire",
     "I am not alive, but I grow. I don't have lungs, but I need air. I don't have a mouth, but water kills me. What am I?": "Fire",
     "What has a heart that doesn't beat?": "Artichoke",
-    "What is so fragile that saying its name breaks it?": "Silence"
+    "What is so fragile that saying its name breaks it?": "Silence",
+    "What has a head and a tail, but no body or legs?": "A coin",
+    "What color can you eat?": "Orange",
+    "What has many words but never speaks?": "A book"
+
+
 }
 
 riddle_keys = list(riddles.keys())  # Convert the dictionary keys into a list.
@@ -25,4 +30,4 @@ for riddle_key in riddle_keys:
     else:
         print("Wrong answer. Correct answer: " + riddles[riddle_key])
 
-print("Game over! Your score is: " + str(score))
+print("Game over! Your score is: " + str(score) + " out of " + str(len(riddles)))
