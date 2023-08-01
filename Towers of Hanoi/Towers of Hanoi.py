@@ -1,5 +1,5 @@
 class Node:
-  def __init__(self, value, link_node=None):
+  def __init__(self, value, link_node = None):
     self.value = value
     self.link_node = link_node
     
@@ -61,57 +61,78 @@ class Stack:
       pointer = pointer.get_next_node()
     print_list.reverse()
     print("{0} Stack: {1}".format(self.get_name(), print_list))
+    
+class TowersOfHanoi:
+    def __init__(self, num_disks):
+        self.num_disks = num_disks
+        self.left_stack = Stack("Left")
+        self.middle_stack = Stack("Middle")
+        self.right_stack = Stack("Right")
+        self.stacks = [self.left_stack, self.middle_stack, self.right_stack]
+        self.num_optimal_moves = (2 ** num_disks) - 1
+        self.num_user_moves = 0
 
+    def setup_game(self):
+        for i in range(self.num_disks, 0, -1):
+            self.left_stack.push(i)
 
-print("\nLet's play Towers of Hanoi!!")
+    def print_stacks(self):
+        print("\n...Current Stacks...")
+        for stack in self.stacks:
+            stack.print_items()
 
-#Create the Stacks
-stacks = []
-left_stack = Stack("Left")
-middle_stack =Stack("Middle")
-right_stack = Stack("Right")
-stacks.extend([left_stack, middle_stack, right_stack])
-#Set up the Game
-num_disks = int(input("\nHow many disks do you want to play with?\n"))
-while num_disks < 3:
-  num_disks = int(input("Enter a number greater than or equal to 3 \n"))
-for i in range(num_disks, 0, -1):
-  left_stack.push(i)
-  
-num_optimal_moves =(2 ** num_disks) - 1
-print("\n The fastest you can solve this game is in {} moves".format(num_optimal_moves))
-#Get User Input
-def get_input():
-  choices = [(stack.get_name()[0]) for stack in stacks]
-  while True:
-    for i in range(len(stacks)):
-      name =stacks[i]. get_name()
-      letter = choices[i]
-      print("Enter {let} for {nam}".format(let=letter, nam=name))
-    user_input = input("")
-    if user_input in choices:
-      for i in range(len(stacks)):
-        if user_input == choices[i]:
-          return stacks[i]
-#Play the Game
-num_user_moves = 0
-while right_stack.get_size() != num_disks:
-  print("\n\n\n...Current Stacks...")
-  for i in stacks:
-    i.print_items()
-  while True:
-    print("\nWhich stack do you want to move from?\n")
-    from_stack = get_input()
-    print("\nWhich stack do you want to move to?\n")
-    to_stack = get_input()
-    if from_stack.is_empty():
-      print("\n\nInvalid Move. Try Again")
-    elif (to_stack.is_empty()) or (from_stack.peek() < to_stack.peek()):
-      disk = from_stack.pop()
-      to_stack.push(disk)
-      num_user_moves += 1
-    else:
-      print("\n\nInvalid Move. Try Again")
-    break
-print("\n\nYou completed the game in {use} moves, and the optimal number of moves is {opt}".format(use=num_user_moves, opt=num_optimal_moves))
-      
+    def move_disk(self, from_stack, to_stack):
+        if from_stack.is_empty():
+            print("\nInvalid Move. Try Again")
+        elif to_stack.is_empty() or from_stack.peek() < to_stack.peek():
+            disk = from_stack.pop()
+            to_stack.push(disk)
+            self.num_user_moves += 1
+        else:
+            print("\nInvalid Move. Try Again")
+
+    def play(self):
+        print("\nLet's play Towers of Hanoi!!")
+        self.setup_game()
+
+        while self.right_stack.get_size() != self.num_disks:
+            self.print_stacks()
+
+            while True:
+                print("\nWhich stack do you want to move from?")
+                from_stack = self.get_input()
+                print("\nWhich stack do you want to move to?")
+                to_stack = self.get_input()
+
+                self.move_disk(from_stack, to_stack)
+                break
+
+        print(
+            "\n\nYou completed the game in {use} moves, and the optimal number of moves is {opt}".format(
+                use=self.num_user_moves, opt=self.num_optimal_moves
+            )
+        )
+
+    def get_input(self):
+        choices = [stack.get_name()[0] for stack in self.stacks]
+        while True:
+            for i in range(len(self.stacks)):
+                name = self.stacks[i].get_name()
+                letter = choices[i]
+                print("Enter {let} for {nam}".format(let=letter, nam=name))
+            user_input = input("")
+            if user_input in choices:
+                for i in range(len(self.stacks)):
+                    if user_input == choices[i]:
+                        return self.stacks[i]
+            else:
+                print("Invalid choice. Please enter a valid option.")
+
+# Run the game
+if __name__ == "__main__":
+    num_disks = int(input("\nHow many disks do you want to play with?\n"))
+    while num_disks < 3:
+        num_disks = int(input("Enter a number greater than or equal to 3\n"))
+
+    game = TowersOfHanoi(num_disks)
+    game.play()
