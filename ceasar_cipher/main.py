@@ -1,5 +1,3 @@
-import time
-
 SYMBOLS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ' #symbols included in the cipher
 while True:
     print('Do you want to (e)ncrypt or (d)ecrypt')
@@ -44,7 +42,5 @@ for char in text:
         translated_text += SYMBOLS[num]
     else:
         translated_text += char
-
-print('[+]Processing......')
 
 print('\n', translated_text)
