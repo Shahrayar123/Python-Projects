@@ -10,8 +10,7 @@ import time
 def start():
     global magic_number
     magic_number = random.randint(1, 100)
-    print(magic_number)
-        
+ 
 mainWindow = tk.Tk()
 global attempts
 attempts = 0
