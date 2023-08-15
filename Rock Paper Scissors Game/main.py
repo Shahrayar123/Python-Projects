@@ -7,21 +7,22 @@ print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 from time import sleep
 from random import choice
 def game():
-    print("\n\n\n\n\n\n\n\nDecide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\"for Paper")
+    print("\n\n\n\n\n\n\n\nDecide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\" for Paper.")
     tempVal=input()
-    while tempVal != 'R' and tempVal != 'S' and tempVal != 'P' and tempVal != 'r' and tempVal != 's' and tempVal != 'p':
-        print("Decide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\"for Paper")
+    while tempVal not in 'RSPrsp':
+        print("Decide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\" for Paper.")
         tempVal=input();
     sleep(0.13)
-    if tempVal == "R" or tempVal == "r":
+    if tempVal in "Rr":
         Pmove=1
-    elif tempVal == "P" or tempVal == "p":
+    elif tempVal in "Pp":
         Pmove=2
-    elif tempVal == "S" or tempVal == "s":
+    elif tempVal in "Ss":
         Pmove=3
     else:
         print("Custom_ERROR-01 : can't recognize user's input")
         raise SystemExit(0);
+
     sleep(0.13)
     Cmove=choice(MoveSet)
     if Cmove == 1:
@@ -74,8 +75,8 @@ while True:
     Cmove,Pmove,cpumove=game()
     winner=decisive(Cmove,Pmove)
     while winner == 0:
-        print("WoW! A Draw!\nBoth Player and CPU have chosen",cpumove)
-        print("let's go again")
+        print("WoW! A Draw! \nBoth Player and CPU have chosen",cpumove)
+        print("Let's go again")
         Cmove,Pmove,cpumove=game()
         winner=decisive(Cmove,Pmove)
     sleep(0.13)
