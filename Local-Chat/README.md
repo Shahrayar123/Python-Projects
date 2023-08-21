@@ -16,12 +16,21 @@ pip3 install -r requirements.txt
 python3 main.py
 ```
 after running the script print S parameter(to create server)
+
 !!! be sure to save the key that the program will give you !!!
-![](https://github.com/p4sh4bsc/Python-Projects/blob/local_chat/Local_chat/src/Server.gif)
+
+
+<img src="https://github.com/p4sh4bsc/Python-Projects/blob/local_chat/Local_chat/src/Server.gif" width="500" height="300" />
+
+
+
 3. Also run `main.py`, but now we gonna connetct to the server as client.
 ```
 python3 main.py
 ```
 after running the script print C parameter(for connection to the server)
-![](https://github.com/p4sh4bsc/Python-Projects/blob/local_chat/Local_chat/src/Client.gif)
+
+
+
+<img src="https://github.com/p4sh4bsc/Python-Projects/blob/local_chat/Local_chat/src/Client.gif" width="500" height="300" />
 4. Start chatting with your friends!
