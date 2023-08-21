@@ -34,3 +34,8 @@ after running the script print C parameter(for connection to the server)
 
 <img src="https://github.com/p4sh4bsc/Python-Projects/blob/local_chat/Local_chat/src/Client.gif" width="500" height="300" />
 4. Start chatting with your friends!
+
+# TODO list
+1. check users by ip
+2. create ports for chat by some hash func
+3. create secure connection between users(for sure every non chat user can listening chat by Wireshark)
