@@ -1,6 +1,9 @@
-# Python Projects <a href="https://emoji.gg/emoji/1887_python"><img src="https://cdn3.emoji.gg/emojis/1887_python.png" width="40px" height="40px" alt="python"></a>
 
+# Python Projects <a href="https://emoji.gg/emoji/1887_python"><img src="https://cdn3.emoji.gg/emojis/1887_python.png" width="40px" height="40px" alt="python"></a>
 A Hub of Python Projects for Beginners.
+
+
+
 
 ## Description
 
@@ -9,12 +12,12 @@ If you are new to open source then do consider this repository to start with.
 
 There are various projects under this repository which will be helpful for you get familiar with Python programming.
 
+
+
 ## Projects
 
 This repository has the following Projects.
-
-### Basic Projects along with _Miscellaneous Games_ like-
-
+### Basic Projects along with *Miscellaneous Games* like- 
 - [Tic-Tac-Toe](https://github.com/Shahrayar123/Python-Projects/tree/master/Tic-Tac-Toe)
 - [Towers of Hanoi](https://github.com/Shahrayar123/Python-Projects/tree/master/Towers%20of%20Hanoi)
 - [Hangman game](https://github.com/Shahrayar123/Python-Projects/tree/master/Hangman%20Game)
@@ -31,7 +34,6 @@ This repository has the following Projects.
 - [QR Code generator](https://github.com/Shahrayar123/Python-Projects/tree/master/QR%20Code)
 
 ### Other projects (not yet validated).
-
 - [AirCanvas](https://github.com/Shahrayar123/Python-Projects/tree/master/AirCanvas)
 - [Conway's Game of Life](https://github.com/Shahrayar123/Python-Projects/tree/master/Conway's%20Game%20of%20Life)
 - [Dice-Simulator](https://github.com/Shahrayar123/Python-Projects/tree/master/Dice-Simulator)
@@ -45,12 +47,14 @@ This repository has the following Projects.
 - [pokemone_battle](https://github.com/Shahrayar123/Python-Projects/tree/master/pokemone_battle.py)
 - [Text-to-Speech](https://github.com/Shahrayar123/Python-Projects/tree/master/Text-to-Speech)
 
+
 ## Contribution
 
 Contributions are always welcome!
 
-### Instructions
 
+
+### Instructions
 1. Fork this repository
 
 2. Clone your forked repository
@@ -65,6 +69,11 @@ Contributions are always welcome!
 
 7. Wait for pull request to merge
 
+
+
+
 #### Celebrate your first step into the open source world and contribute more.
 
 See [GitHub Contribution Documentation](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for more reference.
+
+
