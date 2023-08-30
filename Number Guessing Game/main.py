@@ -16,9 +16,9 @@ def start():
 # Function that checks if player won, if it won, returns True
 def check_win(player_guess):
     if player_guess > magic_number:
-        print('Too big...')
+        print('The Number you guessed is Too big...')
     elif player_guess < magic_number:
-        print('Too small')
+        print('The Number you guessed is Too small')
     elif player_guess == magic_number:
         return True
 
@@ -31,7 +31,7 @@ while True:
     attempts += 1
 
     if check_win(guess):
-        print('You won! - Number of attempts: ' + str(attempts))
+        print('You won! with  - Number of attempts: ' + str(attempts))
 
         keep_playing = input('Keep playing?(y\\n)')
         # If player want to keep the game, reset the number of attempts
