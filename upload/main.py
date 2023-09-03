@@ -35,6 +35,9 @@ def upload():
                 return "<h3>A file  to be uploaded is required</h3>"
         except RequestEntityTooLarge:
             return f"<h3> {file.filename} is larger than the expected size of uploads</h3>"
+        
+    return render_template("result.html")
+
 
 
 @app.route("/view_image/<filename>", methods=["GET"])
