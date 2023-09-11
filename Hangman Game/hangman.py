@@ -3,10 +3,12 @@ import requests
 import random
 from lxml import etree
 
+# OBTAIN RANDOM CHOICES
 alphabetChoice = random.choice(["a","b","c","d","e","f","g","h","i"])
 columnChoice = random.choice(range(1, 3))
 wordChoice = random.choice(range(1, 10))
 
+# FUNCTION TO CHECK NAME IF EMPTY OR NOT
 def checkName(name):
     if name == "":
         print("Sorry, you did not enter your name")
@@ -15,6 +17,7 @@ def checkName(name):
         print("\n--------------------------------------\n")
         return 1
 
+# MAIN FUNCTION OF GAME
 def hangman():
     # Define the URL and XPath
     url = f"https://randomword.com/words/{alphabetChoice}.html"
@@ -29,7 +32,7 @@ def hangman():
 
     # Extract the desired element using the XPath
     word = tree.xpath(xpath)[0].text.strip()
-    # print(WORD)
+    
     alphabets = "abcdefghijklmnopqrstuvwxyz"
     chance = 10
     guess_made = ""
@@ -119,6 +122,7 @@ def hangman():
 
                 break
 
+# START PROGRAM HERE
 
 name = input("Hey there! What is your name: ")
 
