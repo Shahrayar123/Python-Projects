@@ -16,6 +16,7 @@ offsets = {
 
 global SCORE
 SCORE = 0
+
 # Default postion of game scene
 
 def reset():
@@ -35,7 +36,8 @@ def move_snake():
     new_head[1] = snake[-1][1] + offsets[snake_dir][1]
     
     if new_head in snake[:-1]:
-        print(SCORE)
+        SCORE=0
+        update_score(SCORE)
         reset()
     else:
         snake.append(new_head)
@@ -67,6 +69,7 @@ def food_collision():
     global food_position, SCORE
     if get_distance(snake[-1], food_position) < 20:
         SCORE += 10
+        update_score(SCORE) # Initialize the score variable and call the update_score function to display it
         food_position = get_random_food_position()
         food.goto(food_position)
         return True
@@ -105,7 +108,7 @@ def go_right():
 
 #define screen setup
 screen = t.Screen()
-screen.setup(w, h)
+screen.setup(w, h+100)
 screen.title("Snake Game")
 screen.bgcolor("lightgrey")
 screen.tracer(0)
@@ -120,6 +123,20 @@ food.shape("circle")
 food.color("red")
 food.shapesize(food_size / 20)
 food.penup()
+
+scoreboard = t.Turtle()
+scoreboard.speed(0)  # Set the drawing speed (0 is the fastest)
+scoreboard.color("white")
+scoreboard.penup()  # Lift the pen to move without drawing
+scoreboard.hideturtle()  # Hide the turtle icon
+scoreboard.goto(0, 240)  # Adjust the Y-coordinate for the new screen size
+
+# Define a function to update the score
+def update_score(SCORE):
+    scoreboard.clear()  # Clear the previous score
+    scoreboard.write(f"Score: {SCORE}", align="center", font=("Courier", 24, "normal"))
+score = 0
+update_score(score)
 
 #define control setup
 screen.listen()
