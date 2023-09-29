@@ -7,12 +7,13 @@ mainWindow.title('Dictionary')
 mainWindow.geometry("600x400")
 
 #search button
-global response
+global results
+results = " "
 
 # on button press trigger response
 def displayResponse():
-    response="response is here"
-    return response
+    results="response is here"
+    return results
 
 
 searchBtn = Button(mainWindow, text = "Search",padx=5, command= displayResponse())
@@ -59,9 +60,11 @@ entry.bind("<FocusOut>", on_entry_focus_out)
 entry.grid(row=0, column=0, pady=10, padx=20)
 
 
+# TODO Dynamically update the results variable based on search results, and display it on the right pane
+# TODO add a bottom border, and show results based on the checkboxes, and translation dropdown menu
 
 # response on right pane
-response = Label(mainWindow, text = "showResponse()" ,padx=5)
+response = Label(mainWindow, text = results ,padx=5)
 response.grid(row=0,column=6, sticky=W, padx=5,pady=2)
 
 
