@@ -1,0 +1,3 @@
+This Python project prints out Pascal’s Triangle by utilizing conditional statements and loops. It also uses the standard library’s math module and factorial function to evaluate the ‘number of combinations’ equation used to generate the values in the triangle.
+
+Experiment with the seed number for the triangle to examine how the ‘combinations’ equation is used to generate successive values in the triangle. 

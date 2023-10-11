@@ -1,0 +1,3 @@
+As one of the easy Python projects, this program creates a basic calculator application with addition, subtraction, multiplication, and division functions.
+
+This is one of the Python practice projects that are great for learning how to use loops, functions, conditional statements, user input, and string formatting. We’ve also used the Python os module to clear the screen after the user completes their calculation actions.
