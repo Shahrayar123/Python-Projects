@@ -1,7 +1,5 @@
 import random       # also do with numpy (from numpy import random)
 
-"""i can have a board function which prints the board since its being repeated every time.
-or include real animations"""
 
 # ------------ function definition
 
