@@ -4,7 +4,7 @@ import random       # also do with numpy (from numpy import random)
 # ------------ function definition
 
 def roll_dice():
-    number = random.randint(1,6)
+    number = random.randint(1, 6)
     if number == 1:
         print("-----------")
         print("|         |")
@@ -56,7 +56,3 @@ while x.lower() == "y":
 
     if choice.lower() == "n":
         exit(0)
-
-
-
-
