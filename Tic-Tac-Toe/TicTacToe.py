@@ -34,6 +34,7 @@ def userMove():
     run = True
 
     while run:
+        print("1   2   3\n4   5   6\n7   8   9\n")
         pos = input("Enter a position between 1 to 9: ")
 
         try:
@@ -105,7 +106,7 @@ def main():
             printBoard(board)
 
         else:
-            print("Sorry you loose! ")
+            print("Sorry you lose! ")
             break
 
 
