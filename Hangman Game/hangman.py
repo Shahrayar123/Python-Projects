@@ -40,7 +40,7 @@ def hangman():
             if letter in guess_made:
                 main += letter
             else:
-                main = main +"_"+" "
+                main  += "_"+" "
 
         if main == word:
             print("Letter is: "+ main)
@@ -51,7 +51,7 @@ def hangman():
         guess = input("\n")
 
         if guess in alphabets:
-            guess_made = guess_made + guess
+            guess_made += guess
         else:
             guess = input("Enter the valid character:\n")
 
