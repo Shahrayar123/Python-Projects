@@ -45,7 +45,6 @@ This repository has the following Projects.
 - [Web_Automation](https://github.com/Shahrayar123/Python-Projects/tree/master/Web_Automation)
 - [Youtube Searching Script](https://github.com/Shahrayar123/Python-Projects/tree/master/Youtube%20Searching%20Script)
 - [pokemone_battle](https://github.com/Shahrayar123/Python-Projects/tree/master/pokemone_battle.py)
-- [Text-to-Speech](https://github.com/Shahrayar123/Python-Projects/tree/master/Text-to-Speech)
 
 
 ## Contribution
