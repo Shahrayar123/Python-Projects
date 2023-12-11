@@ -1,4 +1,5 @@
 import random       # also do with numpy (from numpy import random)
+import sys
 
 
 # ------------ function definition
@@ -48,15 +49,18 @@ def roll_dice():
         print("-----------")
 
 
-print("                         Dics Simulator                  ")
+print
+print("Dice Simulator")
+print
 x = 'y'
+pyver = (sys.version[0])
+
 while x.lower() == "y":
     roll_dice()             # function call
-    choice = input("Do you want to play again (y/n): ")       # choice from user
-
+    if pyver == "3":
+        choice = input("Do you want to play again (y/n): ")       # choice from user
+    else:
+        choice = raw_input("Do you want to play again (y/n): ")       # choice from user
+    x = choice
     if choice.lower() == "n":
         exit(0)
-
-
-
-
