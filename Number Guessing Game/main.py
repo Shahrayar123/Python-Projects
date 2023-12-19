@@ -31,7 +31,7 @@ while True:
     attempts += 1
 
     if check_win(guess):
-        print('You won! - Number of attempts: ' + str(attempts))
+        print('You won! in just ' + str(attempts) + ' attempts. Congratulations!!')
 
         keep_playing = input('Keep playing?(y\\n)')
         # If player want to keep the game, reset the number of attempts
