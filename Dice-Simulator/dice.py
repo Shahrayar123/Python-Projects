@@ -6,49 +6,61 @@ import random       # also do with numpy (from numpy import random)
 def roll_dice():
     number = random.randint(1,6)
     if number == 1:
-        print("-----------")
-        print("|         |")
-        print("|    0    |")
-        print("|         |")
-        print("-----------")
+        print("""
+        -----------      
+        |         |
+        |    0    |
+        |         |
+        -----------
+        """)
 
     elif number == 2:
-        print("-----------")
-        print("|         |")
-        print("| 0     0 |")
-        print("|         |")
-        print("-----------")
+        print("""
+        -----------      
+        |         |
+        | 0     0 |
+        |         |
+        -----------
+        """)
 
     elif number == 3:
-        print("-----------")
-        print("|    0    |")
-        print("|    0    |")
-        print("|    0    |")
-        print("-----------")
+        print("""
+        -----------      
+        |    0    |
+        |    0    |
+        |    0    |
+        -----------
+        """)
 
     elif number == 4:
-        print("-----------")
-        print("| 0     0 |")
-        print("|         |")
-        print("| 0     0 |")
-        print("-----------")
+        print("""
+        -----------      
+        | 0     0 |
+        |         |
+        | 0     0 |
+        -----------
+        """)
 
     elif number == 5:
-        print("-----------")
-        print("| 0     0 |")
-        print("|    0    |")
-        print("| 0     0 |")
-        print("-----------")
-
+        print("""
+        -----------      
+        | 0     0 |
+        |    0    |
+        | 0     0 |
+        -----------
+        """)
+    
     elif number == 6:
-        print("-----------")
-        print("| 0  0  0 |")
-        print("|         |")
-        print("| 0  0  0 |")
-        print("-----------")
+        print("""
+        -----------      
+        | 0     0 |
+        | 0     0 |
+        | 0     0 |
+        -----------
+        """)
 
 
-print("                         Dics Simulator                  ")
+print("                         Dice Simulator                  ")
 x = 'y'
 while x.lower() == "y":
     roll_dice()             # function call
