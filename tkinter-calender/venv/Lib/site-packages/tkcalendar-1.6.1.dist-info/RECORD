@@ -1,0 +1,17 @@
+tkcalendar-1.6.1.dist-info/INSTALLER,sha256=zuuue4knoyJ-UwPPXg8fezS7VCrXJQrAP7zeNuwvFQg,4
+tkcalendar-1.6.1.dist-info/LICENSE.txt,sha256=jOtLnuWt7d5Hsx6XXB2QxzrSe2sWWh3NgMfFRetluQM,35147
+tkcalendar-1.6.1.dist-info/METADATA,sha256=Q5wDgZOKcil_pBeTQDfH1wOlpJGySrPbqFtJ5qmqxNQ,22211
+tkcalendar-1.6.1.dist-info/RECORD,,
+tkcalendar-1.6.1.dist-info/REQUESTED,sha256=47DEQpj8HBSa-_TImW-5JCeuQeRkm5NMpJWZG3hSuFU,0
+tkcalendar-1.6.1.dist-info/WHEEL,sha256=p46_5Uhzqz6AzeSosiOnxK-zmFja1i22CrQCjmYe8ec,92
+tkcalendar-1.6.1.dist-info/top_level.txt,sha256=b5kRBcf5J4EY_xkjrPhmSD9a3PPJTNceA7PK0k0nofg,11
+tkcalendar/__init__.py,sha256=5hUgk87vYdClePZnVe_5dFS6b8JoZzGLd3Hw2xgIyPI,1044
+tkcalendar/__main__.py,sha256=j7Lv_5hYDV19ZrLofKdo6wNH9BwbhheQ02LcU66VN5Q,1945
+tkcalendar/__pycache__/__init__.cpython-311.pyc,,
+tkcalendar/__pycache__/__main__.cpython-311.pyc,,
+tkcalendar/__pycache__/calendar_.cpython-311.pyc,,
+tkcalendar/__pycache__/dateentry.cpython-311.pyc,,
+tkcalendar/__pycache__/tooltip.cpython-311.pyc,,
+tkcalendar/calendar_.py,sha256=eZgLOz924TW5zCPLynV239Dl_8bkBlOJn_yXPhjSDis,69505
+tkcalendar/dateentry.py,sha256=dfxnqIcJ9-jyUABF1mG_qzOzQOUGacrEaV80LAgN-qU,17039
+tkcalendar/tooltip.py,sha256=6B2srloxxddf3TNddjhDEnqE4upXLpJNuPMSJ2HwiK4,7390
