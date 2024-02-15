@@ -1,138 +1,167 @@
-board = [' ' for i in range(10)]
-
-def insertLetter(letter,pos):
-    board[pos] = letter
+import pygame
+import debug
 
 
-def spaceIsfree(pos):
-   return board[pos] == ' '
+class BoardModel:
+    board = [' ' for _ in range(10)]
 
-def printBoard(board):
-    print("   |   |   ")
-    print(" " +board[1] + " | "+ board[2]+ " | " + board[3])
-    print("   |   |   ")
-    print("-----------")
-    print("   |   |   ")
-    print(" " +board[4] + " | "+ board[5]+ " | " + board[6])
-    print("   |   |   ")
-    print("-----------")
-    print("   |   |   ")
-    print(" " + board[7] + " | " + board[8] + " | " + board[9])
-    print("   |   |   ")
-
-def isBoardFull(board):
-    if board.count(" ") > 1:
-        return False
-    else:
+    def is_board_full(self):
+        for i in self.board:
+            if i == ' ':
+                return False
         return True
 
-def isWinner(b,l):    # b = board, l = letter
-    # check all possibilities
-    return ((b[1] == l and b[2] == l and b[3] == l) or (b[4] == l and b[5] == l and b[6] == l) or (b[7] == l and b[8] == l and b[9] == l) or (b[1] == l and b[4] == l and b[7] == l) or (b[2] == l and b[5] == l and b[8] == l) or (b[3] == l and b[6] == l and b[9] == l) or (b[1] == l and b[5] == l and b[9] == l) or (b[3] == l and b[5] == l and b[7] == l))
+    def initialize_board(self):
+        for i in range(10):
+            self.board[i] = ' '
 
-def userMove():
-    run = True
-
-    while run:
-        pos = input("Enter a position between 1 to 9: ")
-
-        try:
-            pos = int(pos)
-            if (pos > 0) and (pos < 10):
-                if spaceIsfree(pos):
-                    run = False
-                    insertLetter("X" , pos)
-                else:
-                    print("Sorry this space is occupied")
-
-            else:
-                print("Please enter a number range between 1 to 9")
-
-        except:
-            print("Please enter a number ")
-
-def compMove():
-    possibleMoves = [x for x,letter in enumerate(board) if letter == " " and x != 0]
-    move = 0
-
-    for let in ['O','X']:
-        for i in possibleMoves:
-            boardCopy = board[:]
-            boardCopy[i] = let
-
-            if isWinner(boardCopy,let):
-                move = i
-                return move
-
-    cornorOpen = []
-    for i in possibleMoves:
-        if i in [1,3,7,9]:
-            cornorOpen.append(i)
-
-    if len(cornorOpen) > 0:
-        move = selectRandom(cornorOpen)
-        return move
-
-    if 5 in possibleMoves:
-        move = 5
-        return move
-
-    edgeOpen = []
-    for i in possibleMoves:
-        if i in [2,4,6,8]:
-            edgeOpen.append(i)
-
-
-    if len(edgeOpen) > 0:
-        move = selectRandom(edgeOpen)
-        return move
-
-def selectRandom(list_):
-    import random
-    ln = len(list_)
-    r = random.randrange(0,ln)
-
-    return list_[r]
-
-
-def main():
-    print("Welcome to the tic tac toe game\n")
-    printBoard(board)
-
-    while not(isBoardFull(board)):
-        if not(isWinner(board, "O")):
-            userMove()
-            printBoard(board)
-
+    def space_is_free(self, clicked_row, clicked_col):
+        flat_dim_index = flat_index(clicked_row, clicked_col)
+        if self.board[flat_dim_index] == ' ':
+            return True
         else:
-            print("Sorry you loose! ")
-            break
+            return False
 
-
-        if not(isWinner(board, "X")):
-            move = compMove()
-
-            if move == 0:
-                print("Tie game")
-
-            else:
-                insertLetter("O", move)
-                print(f"Computer place O on position {move}")
-                printBoard(board)
-
+    def is_winner(self, player):
+        if (self.board[1] == player and self.board[2] == player and self.board[3] == player) or \
+                (self.board[4] == player and self.board[5] == player and self.board[6] == player) or \
+                (self.board[7] == player and self.board[8] == player and self.board[9] == player) or \
+                (self.board[1] == player and self.board[4] == player and self.board[7] == player) or \
+                (self.board[2] == player and self.board[5] == player and self.board[8] == player) or \
+                (self.board[3] == player and self.board[6] == player and self.board[9] == player) or \
+                (self.board[1] == player and self.board[5] == player and self.board[9] == player) or \
+                (self.board[3] == player and self.board[5] == player and self.board[7] == player):
+            return True
         else:
-            print("You win! ")
-            break
+            return False
 
-    if isBoardFull(board):
-        print("\nGame tie")
+    def set_position(self, row, column, player):
+        flat_dim_index = flat_index(row, column)
+        self.board[flat_dim_index] = player
+
+    def get_symbol_on_position(self, row, column):
+        flat_dim_index = flat_index(row, column)
+        return self.board[flat_dim_index]
 
 
-while True:
-    choice = input("Do you want to play a game (Y/N): ")
-    if choice.lower() == 'y':
-        board = [" " for i in range(10)]
-        print("-----------------------------------------")
-        main()
-    else:
-        break
+class DrawerView:
+    # Screen dimensions
+    width = 300
+    height = 300
+    line_width = 5
+    board_rows = 3
+    board_cols = 3
+    square_size = 100
+    circle_radius = 30
+    circle_width = 15
+    cross_width = 25
+    space = 55
+
+    # Colors
+    line_color = (23, 145, 135)
+    bg_color = (28, 170, 156)
+    circle_color = (239, 231, 200)
+    cross_color = (66, 66, 66)
+
+    screen = pygame.display.set_mode((width, height))
+    pygame.display.set_caption('Tic Tac Toe')
+    screen.fill(bg_color)
+
+    # board = [' ' for _ in range(10)]
+
+    def draw_lines(self):
+        # Horizontal lines
+        pygame.draw.line(self.screen, self.line_color, (0, self.square_size), (self.width, self.square_size),
+                         self.line_width)
+        pygame.draw.line(self.screen, self.line_color, (0, 2 * self.square_size), (self.width, 2 * self.square_size),
+                         self.line_width)
+
+        # Vertical lines
+        pygame.draw.line(self.screen, self.line_color, (self.square_size, 0), (self.square_size, self.height),
+                         self.line_width)
+        pygame.draw.line(self.screen, self.line_color, (2 * self.square_size, 0), (2 * self.square_size, self.height),
+                         self.line_width)
+
+    def draw_figures(self, board: BoardModel):
+        for row in range(self.board_rows):
+            for col in range(self.board_cols):
+                if board.get_symbol_on_position(row, col) == 'O':  # [row * 3 + col + 1]
+                    pygame.draw.circle(self.screen, self.circle_color, (
+                        int(col * self.square_size + self.square_size // 2),
+                        int(row * self.square_size + self.square_size // 2)),
+                                       self.circle_radius,
+                                       self.circle_width)
+                elif board.get_symbol_on_position(row, col) == 'X':
+                    pygame.draw.line(self.screen, self.cross_color,
+                                     (col * self.square_size + self.space,
+                                      row * self.square_size + self.square_size - self.space),
+                                     (col * self.square_size + self.square_size - self.space,
+                                      row * self.square_size + self.space), self.cross_width)
+                    pygame.draw.line(self.screen, self.cross_color,
+                                     (col * self.square_size + self.space, row * self.square_size + self.space),
+                                     (col * self.square_size + self.square_size - self.space,
+                                      row * self.square_size + self.square_size - self.space),
+                                     self.cross_width)
+
+    def get_mouse_row_col(self, mouse_x, mouse_y):
+        x, y = int(mouse_y // self.square_size), int(mouse_x // self.square_size)
+        return x, y
+
+
+def flat_index(row, col):
+    return row * 3 + col + 1
+
+
+class Controller:
+    def __init__(self):
+        pygame.init()
+        self.drawer = DrawerView()
+        self.board = BoardModel()
+
+    def game(self):
+        self.drawer.draw_lines()
+        pygame.display.update()
+        running = True
+        player_symbol = 'X'
+        board = BoardModel()
+
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    running = False
+                # a1 = board.is_board_full()
+                # debug.debug(a1, 10)
+                if event.type == pygame.MOUSEBUTTONDOWN and not board.is_board_full():
+                    mouse_x = event.pos[0]  # x
+                    mouse_y = event.pos[1]  # y
+
+                    clicked_row, clicked_col = self.drawer.get_mouse_row_col(mouse_x, mouse_y)
+                    # print(clicked_row, clicked_col)
+
+                    if board.space_is_free(clicked_row, clicked_col) \
+                            and player_symbol == 'X' \
+                            and not board.is_board_full():
+                        board.set_position(clicked_row, clicked_col, 'X')
+                        player_symbol = 'O'
+                        self.drawer.draw_figures(self.board)
+
+                    if board.space_is_free(clicked_row, clicked_col) \
+                            and player_symbol == 'O' and not board.is_board_full():
+                        board.set_position(clicked_row, clicked_col, 'O')
+                        player_symbol = 'X'
+                        self.drawer.draw_figures(self.board)
+                pygame.display.update()
+
+            if board.is_winner('X'):
+                print("X wins!")
+                running = False
+            elif board.is_winner('O'):
+                print("O wins!")
+                running = False
+            elif board.is_board_full():
+                print("Tie game!")
+
+
+if __name__ == "__main__":
+    controller = Controller()
+    controller.game()
