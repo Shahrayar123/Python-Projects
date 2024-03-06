@@ -64,13 +64,13 @@ def compMove():
                 move = i
                 return move
 
-    cornorOpen = []
+    cornerOpen = []
     for i in possibleMoves:
         if i in [1,3,7,9]:
-            cornorOpen.append(i)
+            cornerOpen.append(i)
 
-    if len(cornorOpen) > 0:
-        move = selectRandom(cornorOpen)
+    if len(cornerOpen) > 0:
+        move = selectRandom(cornerOpen)
         return move
 
     if 5 in possibleMoves:
@@ -105,7 +105,7 @@ def main():
             printBoard(board)
 
         else:
-            print("Sorry you loose! ")
+            print("Sorry you lose! ")
             break
 
 
