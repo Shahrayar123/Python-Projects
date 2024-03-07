@@ -21,7 +21,7 @@ def printBoard(board):
     print("   |   |   ")
 
 def isBoardFull(board):
-    if board.count(" ") > 1:
+    if board.count(" ") > 0:
         return False
     else:
         return True
@@ -103,7 +103,7 @@ def main():
         if not(isWinner(board, "O")):
             userMove()
             printBoard(board)
-
+            
         else:
             print("Sorry you lose! ")
             break
@@ -111,9 +111,10 @@ def main():
 
         if not(isWinner(board, "X")):
             move = compMove()
-
-            if move == 0:
-                print("Tie game")
+            
+            if move == 0 or move == None:
+                print("\nTie Game!")
+                break
 
             else:
                 insertLetter("O", move)
@@ -124,8 +125,8 @@ def main():
             print("You win! ")
             break
 
-    if isBoardFull(board):
-        print("\nGame tie")
+
+
 
 
 while True:
