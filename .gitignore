@@ -1,0 +1,4 @@
+#Removing those generated folders
+.idea/
+__pycache__/
+.vscode/
