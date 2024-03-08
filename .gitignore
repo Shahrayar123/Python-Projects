@@ -1,2 +1,3 @@
-#Removing .idea folders
+#Removing those generated folders
 .idea/
+__pycache__/
