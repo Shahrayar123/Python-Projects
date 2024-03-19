@@ -43,7 +43,7 @@ def hangman():
                 main = main +"_"+" "
 
         if main == word:
-            print("Letter is: "+ main)
+            print("Word is: "+ main)
             print("You win! ")
             break
 
@@ -51,7 +51,7 @@ def hangman():
         guess = input("\n")
 
         if guess in alphabets:
-            guess_made = guess_made + guess
+            guess_made += guess
         else:
             guess = input("Enter the valid character:\n")
 
@@ -104,14 +104,14 @@ def hangman():
                 print("     / \     ")
             if chance == 1:
                 print("1 turns left")
-                print("last breating...")
+                print("last breathing...")
                 print("\n---------------------------- ")
                 print("     \O/ __|  ")
                 print("      |      ")
                 print("     / \     ")
 
             if chance == 0:
-                print(f"You loss that man. The answer was {word}")
+                print(f"You lost that man. The answer was {word}")
                 print("Game Over")
                 print("      O____|  ")
                 print("     /|\      ")
