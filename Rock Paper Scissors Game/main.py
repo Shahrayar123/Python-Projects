@@ -1,5 +1,5 @@
 #Rock Paper Scissors game by marsian
-print("\n\n\nRock Paper Scissors by marsian83\n\npresss Ctrl+. when you feel like exitting the game.")
+print("\n\n\nRock Paper Scissors by marsian83\n\npress Ctrl+. when you feel like exiting the game.")
 input("\n\n<<PRESS ENTER TO BEGIN>>\n")
 print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
@@ -7,21 +7,21 @@ print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 from time import sleep
 from random import choice
 def game():
-    print("\n\n\n\n\n\n\n\nDecide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\"for Paper")
-    tempVal=input()
-    while tempVal != 'R' and tempVal != 'S' and tempVal != 'P' and tempVal != 'r' and tempVal != 's' and tempVal != 'p':
-        print("Decide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\"for Paper")
-        tempVal=input();
+    print("\n\n\n\n\n\n\n\nDecide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\" for Paper:")
+    tempVal=input().upper()
+    while tempVal not in InputSet:
+        print("Decide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\" for Paper")
+        tempVal=input().upper()
     sleep(0.13)
-    if tempVal == "R" or tempVal == "r":
+    if tempVal == InputSet[0]:
         Pmove=1
-    elif tempVal == "P" or tempVal == "p":
+    elif tempVal == InputSet[1]:
         Pmove=2
-    elif tempVal == "S" or tempVal == "s":
+    elif tempVal == InputSet[2]:
         Pmove=3
     else:
         print("Custom_ERROR-01 : can't recognize user's input")
-        raise SystemExit(0);
+        raise SystemExit(0)
     sleep(0.13)
     Cmove=choice(MoveSet)
     if Cmove == 1:
@@ -33,7 +33,7 @@ def game():
     else:
         print("Custom_ERROR-00 : CPU's move unrecognizable")
         raise SystemExit(0)
-    del tempVal;
+    del tempVal
     sleep(0.038)
     return Cmove, Pmove, cpumove
 def decisive(Cmove,Pmove):
@@ -64,6 +64,7 @@ def Scoreboard(winner,cm,cs,ps):
 
 #Variable declaration
 MoveSet = [1,2,3]
+InputSet = ['R', 'P', 'S']
 Cmove=0
 Pmove=0
 Cscore=0
