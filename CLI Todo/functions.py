@@ -1,6 +1,6 @@
 FILEPATH = './todo.txt'
 def read_todos(filePath=FILEPATH):
-     """"Read a text  file and return the list of todo's items"""
+     """"Read a text file and return the list of todo's items"""
      with open(filePath, 'r') as db:
           read = db.readlines()
      return read
