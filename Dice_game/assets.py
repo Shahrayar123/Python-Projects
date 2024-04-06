@@ -68,4 +68,3 @@ ASCII_ASSETS = {  #ALL ASCII ASSETS
 └─────────?
     """
 } 
-print(ASCII_ASSETS["ready?"])
