@@ -2,6 +2,7 @@ from tkinter import *
 import datetime
 import time
 import winsound
+import threading
 
 def Alarm(set_alarm_timer):
     while True:
@@ -15,7 +16,10 @@ def Alarm(set_alarm_timer):
             break
 def get_alarm_time():
     alarm_set_time = f"{hour.get()}:{min.get()}:{sec.get()}"
-    Alarm(alarm_set_time)
+    #creates a thread for the Alarm() function
+    t1 = threading.Thread(target=Alarm, args=[alarm_set_time])
+    #runs the thread
+    t1.start()
 window = Tk()
 window.title("Alarm Clock")
 window.geometry("400x160")
