@@ -59,7 +59,7 @@ Contributions are always welcome!
 
 2. Clone your forked repository
 
-3. Add your scripts
+3. Add your scripts along with description
 
 4. Commit and push
 
