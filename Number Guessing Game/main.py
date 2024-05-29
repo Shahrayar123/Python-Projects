@@ -16,9 +16,9 @@ def start():
 # Function that checks if player won, if it won, returns True
 def check_win(player_guess):
     if player_guess > magic_number:
-        print('Too big...')
+        print('Your guess is higher than the magic number')
     elif player_guess < magic_number:
-        print('Too small')
+        print('Your guess is lower than the magic number')
     elif player_guess == magic_number:
         return True
 
