@@ -1,6 +1,7 @@
 import time
 import numpy as np
 import sys
+import random
 
 # Delay printing
 
@@ -11,6 +12,28 @@ def delay_print(s):
         sys.stdout.write(c)
         sys.stdout.flush()
         time.sleep(0.05)
+
+def choose(choices):
+    # Let user choose Pokemon
+
+    # Ask user
+    print()
+    print("Choose your Pokemon!")
+    print()
+    print("--------------------")
+
+    for index, c in enumerate(choices):
+        i = index+1
+        print(str(i) + ". " + str(c.name))
+
+    print("--------------------")
+    print()
+    print()
+
+    choice = int(input('Select your Pokemon: '))
+
+    return choice
+
 
 # Create the class
 class Pokemon:
@@ -29,7 +52,7 @@ class Pokemon:
         # Allow two pokemon to fight each other
 
         # Print fight information
-        print("-----POKEMONE BATTLE-----")
+        print("-----POKEMON BATTLE-----")
         print(f"\n{self.name}")
         print("TYPE/", self.types)
         print("ATTACK/", self.attack)
@@ -155,5 +178,20 @@ if __name__ == '__main__':
     Wartortle = Pokemon('Wartortle', 'Water', ['Bubblebeam', 'Water Gun', 'Headbutt', 'Surf'],{'ATTACK': 5, 'DEFENSE':5})
     Ivysaur = Pokemon('Ivysaur\t', 'Grass', ['Vine Wip', 'Razor Leaf', 'Bullet Seed', 'Leech Seed'],{'ATTACK':4, 'DEFENSE':6})
 
+    # Store Pokemon in array
+    choices = [Charizard, Blastoise, Venusaur, Charmander, Squirtle, Bulbasaur, Charmeleon, Wartortle, Ivysaur]
 
-    Charizard.fight(Squirtle) # Get them to fight
+    # User selection
+    selection = choices[choose(choices)]
+
+    # Opponent random selection
+    opponent_selection = choices[random.randint(0, len(choices)-1)]
+
+    # Annoucing user and opponent choices
+    print()
+    print("You chose " + selection.name + "!")
+    print()
+    print("Opponent chooses " + opponent_selection.name + "!")
+    print()
+
+    selection.fight(opponent_selection) # Get them to fight
