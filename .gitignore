@@ -6,4 +6,5 @@ venv/
 .venv/
 
 *.db
+*.s3db
 *.sqlite3
