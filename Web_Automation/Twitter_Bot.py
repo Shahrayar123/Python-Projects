@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 import time
 
-class Twitter():
+class twitter():
   def __init__(self,username,password):
     self.username = username
     self.password = password
@@ -20,5 +20,5 @@ class Twitter():
     password.send_keys(Keys.RETURN)
   
 
-load = Twitter('enter_email','enter_password')
+load = twitter('enter_email','enter_password')
 load.login()
