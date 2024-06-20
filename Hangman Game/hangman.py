@@ -14,7 +14,7 @@ def checkName(name):
     else:
         print("\n--------------------------------------\n")
         return 1
-
+    
 def hangman():
     # Define the URL and XPath
     url = f"https://randomword.com/words/{alphabetChoice}.html"
@@ -33,6 +33,7 @@ def hangman():
     alphabets = "abcdefghijklmnopqrstuvwxyz"
     chance = 10
     guess_made = ""
+    attemps = [""*26]
 
     while len(word) > 0:
         main = ""
@@ -43,25 +44,32 @@ def hangman():
                 main = main +"_"+" "
 
         if main == word:
-            print("Letter is: "+ main)
-            print("You win! ")
+            print("The word is: "+ main)
+            print("Congratulations, you won!")
             break
 
         print(f"Guess the word {main}")
         guess = input("\n")
 
+        while guess in attemps:
+            print("You've already tried this letter, make another guess")
+            guess = input("\n")
+            if guess not in attemps:
+                break
+        attemps.append(guess)
+
         if guess in alphabets:
             guess_made = guess_made + guess
         else:
-            guess = input("Enter the valid character:\n")
+            guess = input("Enter a valid character:\n")
 
         if guess not in word:
-            print(word)
             chance -= 1
 
             if chance == 9:
                 print("9 turns left")
                 print("\n---------------------------- ")
+                print("      (      ")
 
             if chance == 8:
                 print("8 turns left")
@@ -104,7 +112,7 @@ def hangman():
                 print("     / \     ")
             if chance == 1:
                 print("1 turns left")
-                print("last breating...")
+                print("last breath...")
                 print("\n---------------------------- ")
                 print("     \O/ __|  ")
                 print("      |      ")
