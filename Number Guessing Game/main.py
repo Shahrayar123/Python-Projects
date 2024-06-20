@@ -27,11 +27,14 @@ start()
 # Game loop
 while True:
     # Take the player input
-    guess = int(input())
+    
+    guess = input("Guess the number:")
+    if not guess.isdecimal():
+            continue
+        
     attempts += 1
-
-    if check_win(guess):
-        print('You won! - Number of attempts: ' + str(attempts))
+    if check_win(int(guess)):
+        print(f'You won! - Number of attempts: {str(attempts)}')
 
         keep_playing = input('Keep playing?(y\\n)')
         # If player want to keep the game, reset the number of attempts
