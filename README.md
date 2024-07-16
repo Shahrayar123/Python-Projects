@@ -1,6 +1,6 @@
 
 # Python Projects <a href="https://emoji.gg/emoji/1887_python"><img src="https://cdn3.emoji.gg/emojis/1887_python.png" width="40px" height="40px" alt="python"></a>
-A Hub of Python Projects for Begineers.
+A Hub of Python Projects for Beginners.
 
 
 
@@ -45,6 +45,7 @@ This repository has the following Projects.
 - [Web_Automation](https://github.com/Shahrayar123/Python-Projects/tree/master/Web_Automation)
 - [Youtube Searching Script](https://github.com/Shahrayar123/Python-Projects/tree/master/Youtube%20Searching%20Script)
 - [pokemone_battle](https://github.com/Shahrayar123/Python-Projects/tree/master/pokemone_battle.py)
+- [Text-to-Speech](https://github.com/Shahrayar123/Python-Projects/tree/master/Text-to-Speech)
 
 
 ## Contribution
@@ -58,7 +59,7 @@ Contributions are always welcome!
 
 2. Clone your forked repository
 
-3. Add your scripts
+3. Add your scripts along with description
 
 4. Commit and push
 
