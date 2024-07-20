@@ -8,7 +8,6 @@ Welcome to the Hangman game! This project implements a simple command-line versi
 2. [Installation](#installation)
 3. [Usage](#usage)
 4. [Code Explanation](#code-explanation)
-5. [License](#license)
 
 ## Introduction
 
