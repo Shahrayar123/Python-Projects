@@ -113,10 +113,10 @@ def main():
         if not(isWinner(board, "X")):
             move = compMove()
 
-            # 修正箇所: move が None か 0 の場合の処理を追加
+            # Fixed Draw
             if move is None or move == 0:
                 print("Tie game")
-                break  # ゲームを終了
+                break  # Game finish
             else:
                 insertLetter("O", move)
                 printBoard(board)
