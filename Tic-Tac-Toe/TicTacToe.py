@@ -105,7 +105,7 @@ def main():
             printBoard(board)
 
         else:
-            print("Sorry you lose! ")
+            print("Sorry you lose ! ")
             break
 
 
