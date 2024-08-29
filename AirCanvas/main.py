@@ -5,8 +5,8 @@ from collections import deque
 
 
 # default called trackbar function
-def setValues():
-    print(" ")
+def setValues(x):
+    pass
 
 
 # Creating the trackbars needed for
@@ -113,7 +113,7 @@ while True:
 
     # Find contours for the pointer after
     # identifying it
-    _,cnts,_ = cv2.findContours(Mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+    cnts,_ = cv2.findContours(Mask.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
     center = None
 
     # If the contours are formed
@@ -129,8 +129,13 @@ while True:
         cv2.circle(frame, (int(x), int(y)), int(radius), (0, 255, 255), 2)
 
         # Calculating the center of the detected contour
+        # Calculating the center of the detected contour
         M = cv2.moments(cnt)
-        center = (int(M['m10'] / M['m00']), int(M['m01'] / M['m00']))
+        if M['m00'] != 0:  # Prevent division by zero
+            center = (int(M['m10'] / M['m00']), int(M['m01'] / M['m00']))
+        else:
+            center = None
+
 
         # Now checking if the user wants to click on
         # any button above the screen
@@ -170,14 +175,19 @@ while True:
     # Append the next deques when nothing is
     # detected to avoid messing up
     else:
-        bpoints.append(deque(maxlen=512))
-        blue_index += 1
-        gpoints.append(deque(maxlen=512))
-        green_index += 1
-        rpoints.append(deque(maxlen=512))
-        red_index += 1
-        ypoints.append(deque(maxlen=512))
-        yellow_index += 1
+        if len(bpoints[blue_index]) > 0:
+            bpoints.append(deque(maxlen=512))
+            blue_index += 1
+        if len(gpoints[green_index]) > 0:
+            gpoints.append(deque(maxlen=512))
+            green_index += 1
+        if len(rpoints[red_index]) > 0:
+            rpoints.append(deque(maxlen=512))
+            red_index += 1
+        if len(ypoints[yellow_index]) > 0:
+            ypoints.append(deque(maxlen=512))
+            yellow_index += 1
+
 
     # Draw lines of all the colors on the
     # canvas and frame
