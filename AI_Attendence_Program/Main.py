@@ -74,3 +74,19 @@ while True:
         break
 cap.release()
 cv2.destroyAllWindows()
+def encodings(images):
+    """
+    This function generates face encodings for a list of images.
+
+    Parameters:
+    images (list): A list of images where each image is represented as a numpy array.
+
+    Returns:
+    list: A list of face encodings corresponding to the input images.
+    """
+    encodelist = []
+    for img in images:
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        encode = face_recognition.face_encodings(img)[0]
+        encodelist.append(encode)
+    return encodelist
