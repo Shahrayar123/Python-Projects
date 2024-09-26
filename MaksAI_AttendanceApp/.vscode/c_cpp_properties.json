@@ -1,0 +1,34 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",  // Name of the configuration. This is displayed in the VSCode debug dropdown.
+
+            "includePath": [  // List of directories to be included in the search path for header files.
+                "${workspaceFolder}/**"  // Include all files in the current workspace.
+            ],
+
+            "defines": [  // List of preprocessor macros to be defined during compilation.
+                "VERSION=1"  // Define a macro named VERSION with value 1.
+            ],
+
+            "macFrameworkPath": [  // List of directories to be included in the search path for macOS frameworks.
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"
+            ],
+
+            "compilerPath": "/usr/bin/clang",  // Path to the C/C++ compiler.
+
+            "cStandard": "c17",  // C language standard to be used during compilation.
+
+            "cppStandard": "c++17",  // C++ language standard to be used during compilation.
+
+            "intelliSenseMode": "macos-clang-x64",  // IntelliSense mode for C/C++ language.
+
+            "compilerArgs": [  // Additional arguments to be passed to the compiler.
+                "--sysroot <arg>",
+                "\"--sysroot\", \"<arg>\""
+            ]
+        }
+    ],
+
+    "version": 4  // Version of the configuration file format.
+}
