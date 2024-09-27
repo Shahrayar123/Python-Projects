@@ -2,7 +2,42 @@ import cv2
 import numpy as np
 import face_recognition
 import os
+
+# Get the absolute path of the current file
+current_file_path = os.path.abspath(__file__)
+
+# Get the directory path by removing the file name
+directory_path = os.path.dirname(current_file_path)
+
+# Print the directory path
+print(/Users/amakki/Documents/Coding-Design/GitHub/PythonProject/Python-Project/Python-Projects/MaksAI_AttendanceApp)
+
 from datetime import datetime
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "VERSION=1"
+            ],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/Users/amakki/Documents/Coding-Design/GitHub/PythonProject/Python-Project/Python-Projects/MaksAI_AttendanceApp/.vscode/c_cpp_properties.json",
+            "cStandard": "c17",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-x64",
+            "compilerArgs": [
+                "--sysroot <arg>",
+                "\"--sysroot\", \"<arg>\""
+            ]
+        }
+    ],
+    "version": 4
+}
 
 path = 'Images'
 Images = []
@@ -14,6 +49,13 @@ for cu_img in mylist:
     current_Img = cv2.imread(f'{path}/{cu_img}')
     Images.append(current_Img)
     PersonName.append(os.path.splitext(cu_img)[0])
+print(PersonName)
+
+# Add your first image to the 'Images' directory
+# Replace 'your_first_image.jpg' with the name of your first image file
+first_image = cv2.imread(f'{path}/my_first_image.jpg')
+Images.append(first_image)
+PersonName.append('Maks First Image')
 print(PersonName)
 
 
@@ -64,7 +106,7 @@ while True:
             name = PersonName[matchIndex].upper()
             y1, x2, y2, x1 = faceLoc
             #y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
+            cv2.square(frame, (x1, y1), (x2, y2), (5, 200, 200), 3)
             cv2.rectangle(frame, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
             cv2.putText(frame, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
             attendance(name)
