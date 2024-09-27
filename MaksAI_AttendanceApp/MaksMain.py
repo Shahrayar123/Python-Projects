@@ -10,7 +10,7 @@ current_file_path = os.path.abspath(__file__)
 directory_path = os.path.dirname(current_file_path)
 
 # Print the directory path
-print(/Users/amakki/Documents/Coding-Design/GitHub/PythonProject/Python-Project/Python-Projects/MaksAI_AttendanceApp)
+print(directory_path)
 
 from datetime import datetime
 {
