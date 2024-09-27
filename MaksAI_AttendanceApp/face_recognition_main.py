@@ -27,7 +27,7 @@ print(PersonName)
 # Replace 'Maks First Image' with the name you want to assign to your first image
 first_image = cv2.imread(f'{path}/your_first_image.jpg')
 Images.append(first_image)
-PersonName.append('Maks First Image')
+PersonName.append('My First Image')
 print(PersonName)
 
 def encodings(images):
