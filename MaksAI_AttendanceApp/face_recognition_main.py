@@ -1,8 +1,14 @@
+# Include the necessary OpenCV header
 import cv2
-import numpy as np
-import face_recognition
-import os
-from datetime import datetime
+
+# Get the absolute path of the current file
+current_file_path = os.path.abspath(__file__)
+
+# Get the directory path by removing the file name
+directory_path = os.path.dirname(current_file_path)
+
+# Print the directory path
+print(directory_path)
 
 path = 'Images'
 Images = []
@@ -16,6 +22,13 @@ for cu_img in mylist:
     PersonName.append(os.path.splitext(cu_img)[0])
 print(PersonName)
 
+# Add your first image to the 'Images' directory
+# Replace 'your_first_image.jpg' with the name of your first image file
+# Replace 'Maks First Image' with the name you want to assign to your first image
+first_image = cv2.imread(f'{path}/your_first_image.jpg')
+Images.append(first_image)
+PersonName.append('My First Image')
+print(PersonName)
 
 def encodings(images):
     encodelist = []
@@ -25,10 +38,8 @@ def encodings(images):
         encodelist.append(encode)
     return encodelist
 
-
 encode_list_Known = encodings(Images)
 print("ALL ENCODING FOUND!!!")
-
 
 def attendance(name):
     with open('Attendence.csv', 'r+') as f:
@@ -42,7 +53,6 @@ def attendance(name):
             tStr = time_now.strftime('%H:%M:%S')
             dStr = time_now.strftime('%d/%m/%Y')
             f.writelines(f'\n{name},{tStr},{dStr}')
-
 
 cap = cv2.VideoCapture(0)
 
@@ -64,7 +74,7 @@ while True:
             name = PersonName[matchIndex].upper()
             y1, x2, y2, x1 = faceLoc
             #y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
-            cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
+            cv2.square(frame, (x1, y1), (x2, y2), (5, 200, 200), 3)
             cv2.rectangle(frame, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
             cv2.putText(frame, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
             attendance(name)
@@ -74,19 +84,3 @@ while True:
         break
 cap.release()
 cv2.destroyAllWindows()
-def encodings(images):
-    """
-    This function generates face encodings for a list of images.
-
-    Parameters:
-    images (list): A list of images where each image is represented as a numpy array.
-
-    Returns:
-    list: A list of face encodings corresponding to the input images.
-    """
-    encodelist = []
-    for img in images:
-        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        encode = face_recognition.face_encodings(img)[0]
-        encodelist.append(encode)
-    return encodelist
