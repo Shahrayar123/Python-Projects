@@ -49,11 +49,6 @@ python bmi_calculator.py
 
 
 <p align="center">
-  
-
-![BMI Calculator Screenshot](img/im3)
-![BMI Calculator Screenshot](img/im2)
-![BMI Calculator Screenshot](img/im3)
 
 <img src="img/im1.png" alt="Image 1" width="250" style="margin-right: 10px;">
   <img src="img/im2.png" alt="Image 2" width="250" style="margin-right: 10px;">
