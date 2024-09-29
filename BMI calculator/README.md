@@ -1,56 +1,55 @@
 
+
 # BMI Calculator
 
-BMI Calculator è un'applicazione desktop scritta in Python utilizzando la libreria Tkinter, che consente agli utenti di calcolare il proprio **Indice di Massa Corporea** (BMI - Body Mass Index) in base alla loro altezza e peso. L'interfaccia utente è progettata per essere intuitiva e moderna, con controlli a scorrimento e visualizzazione dinamica.
+BMI Calculator is a desktop application written in Python using the Tkinter library, which allows users to calculate their **Body Mass Index** (BMI) based on their height and weight. The user interface is designed to be intuitive and modern, with slider controls and dynamic visualization.
 
-## Funzionalità
+## Features
 
-- Calcolo del BMI basato su altezza (in centimetri) e peso (in chilogrammi).
-- Regolazione interattiva dell'altezza e del peso tramite slider.
-- Classificazione del BMI in base alle linee guida standard (sottopeso, normale, sovrappeso, obeso).
-- Interfaccia grafica moderna e user-friendly con immagini e colori personalizzati.
-- Visualizzazione di suggerimenti personalizzati sulla salute in base al risultato del BMI.
+- BMI calculation based on height (in centimeters) and weight (in kilograms).
+- Interactive adjustment of height and weight through sliders.
+- BMI classification based on standard guidelines (underweight, normal, overweight, obese).
+- Modern and user-friendly graphical interface with custom images and colors.
+- Display of personalized health suggestions based on the BMI result.
 
-## Come Funziona
+## How It Works
 
-1. Imposta la tua altezza tramite lo slider a sinistra o inserisci manualmente il valore nel campo "Altezza".
-2. Imposta il tuo peso tramite lo slider a destra o inserisci manualmente il valore nel campo "Peso".
-3. Clicca sul pulsante "View Report" per calcolare il tuo BMI.
-4. Il risultato sarà mostrato nella parte inferiore, insieme a una classificazione e consigli sulla salute.
+1. Set your height using the slider on the left or manually enter the value in the "Height" field.
+2. Set your weight using the slider on the right or manually enter the value in the "Weight" field.
+3. Click the "View Report" button to calculate your BMI.
+4. The result will be displayed at the bottom, along with a classification and health advice.
 
-## Requisiti
+## Requirements
 
 - **Python 3.x**
-- **Tkinter** (di solito preinstallato con Python)
-- **Pillow** (per la gestione delle immagini)
+- **Tkinter** (usually pre-installed with Python)
+- **Pillow** (for image handling)
 
-Per installare Pillow, puoi eseguire:
+To install Pillow, you can run:
 
 ```bash
 pip install Pillow
 ```
 
-## Come Eseguire
+## How to Run
 
-1. Clona o scarica il progetto nella tua directory locale.
-2. Assicurati di avere i requisiti installati.
-3. Esegui il file Python principale:
+1. Clone or download the project to your local directory.
+2. Make sure you have the required dependencies installed.
+3. Run the main Python file:
 
 ```bash
 python bmi_calculator.py
 ```
 
-## Struttura del Progetto
+## Project Structure
 
-- **bmi_calculator.py**: Il file principale contenente la logica dell'applicazione e l'interfaccia grafica.
-- **Sprites/**: La cartella contenente tutte le immagini utilizzate nell'applicazione, come icone e sfondi.
+- **bmi_calculator.py**: The main file containing the application's logic and graphical interface.
+- **Sprites/**: The folder containing all images used in the application, such as icons and backgrounds.
 
-## Esempio di Interfaccia
-
+## Interface Example
 
 <p align="center">
-
-<img src="img/im1.png" alt="Image 1" width="250" style="margin-right: 10px;">
+  <img src="img/im1.png" alt="Image 1" width="250" style="margin-right: 10px;">
   <img src="img/im2.png" alt="Image 2" width="250" style="margin-right: 10px;">
   <img src="img/im3.png" alt="Image 3" width="250">
 </p>
