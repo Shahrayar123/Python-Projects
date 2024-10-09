@@ -9,13 +9,13 @@ Images = []
 PersonName = []
 mylist = os.listdir(path)
 print(mylist)
-# for separating the name from their extensions
+
+# For separating the name from their extensions
 for cu_img in mylist:
     current_Img = cv2.imread(f'{path}/{cu_img}')
     Images.append(current_Img)
     PersonName.append(os.path.splitext(cu_img)[0])
 print(PersonName)
-
 
 def encodings(images):
     encodelist = []
@@ -25,10 +25,8 @@ def encodings(images):
         encodelist.append(encode)
     return encodelist
 
-
 encode_list_Known = encodings(Images)
 print("ALL ENCODING FOUND!!!")
-
 
 def attendance(name):
     with open('Attendence.csv', 'r+') as f:
@@ -43,16 +41,23 @@ def attendance(name):
             dStr = time_now.strftime('%d/%m/%Y')
             f.writelines(f'\n{name},{tStr},{dStr}')
 
+def check_camera_access(cap):
+    if not cap.isOpened():
+        print("Error: Unable to access the webcam.")
+        return False
+    return True
 
 cap = cv2.VideoCapture(0)
 
-# Check if the webcam is opened successfully
-if not cap.isOpened():
-    print("Error: Could not access the camera.")
-    exit()
+if not check_camera_access(cap):
+    exit()  # Exit if the camera is not accessible
 
 while True:
     ret, frame = cap.read()
+    if not ret:
+        print("Error: Unable to read from the webcam.")
+        break
+
     faces = cv2.resize(frame, (0, 0), None, 0.25, 0.25)
     faces = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
@@ -68,7 +73,6 @@ while True:
         if matches[matchIndex]:
             name = PersonName[matchIndex].upper()
             y1, x2, y2, x1 = faceLoc
-            #y1, x2, y2, x1 = y1 * 4, x2 * 4, y2 * 4, x1 * 4
             cv2.rectangle(frame, (x1, y1), (x2, y2), (255, 0, 0), 2)
             cv2.rectangle(frame, (x1, y2 - 35), (x2, y2), (0, 255, 0), cv2.FILLED)
             cv2.putText(frame, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
@@ -77,5 +81,6 @@ while True:
     cv2.imshow("camera", frame)
     if cv2.waitKey(10) == 13:
         break
+
 cap.release()
 cv2.destroyAllWindows()
