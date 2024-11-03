@@ -47,6 +47,8 @@ This repository has the following Projects.
 - [pokemone_battle](https://github.com/Shahrayar123/Python-Projects/tree/master/pokemone_battle.py)
 - [Text-to-Speech](https://github.com/Shahrayar123/Python-Projects/tree/master/Text-to-Speech)
 
+### Other art code python 
+- [Fractal_art](https://github.com/Shahrayar123/Python-Projects/tree/master/Fractal_art)
 
 ## Contribution
 
