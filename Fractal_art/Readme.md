@@ -37,9 +37,3 @@ Modify the following parameters in the `main()` function to change the fractal's
 
 Running the script generates a fractal pattern that visually represents branching structures.
 
-## License
-
-This project is open-source. Feel free to modify and use it as you wish!
-```
-
-Feel free to adjust any section to better fit your needs or to add more information as you see fit!
