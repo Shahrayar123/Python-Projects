@@ -1,5 +1,3 @@
-Here’s a simple `README.md` file for your fractal drawing project. You can copy and paste this directly into a file named `README.md` in your project directory.
-
 ```markdown
 # Fractal Drawing with Turtle Graphics
 
