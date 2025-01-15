@@ -1,4 +1,3 @@
-
 # Uses the pythagorean theorem to calculate the distance between two points on a 2D plane.
 # The points are represented as tuples of two numbers.
 # The function should return a float.
@@ -10,20 +9,30 @@
 import math
 
 while True:
+    que=input("Do you want to calculate the distance between two points? (yes/no): ")
+    if que.lower() == "yes":
+        pass
+    elif que.lower() == "no":
+        print("Thank you for using the distance calculator!")
+        quit()
+    else:
+        print("Invalid input! Please enter 'yes' or 'no'.")
+        continue    
+
     startX = input("Enter starting x-coordinate: ")
-    if not startX.isdigit():
+    if startX.isalpha():
         print("Error! Input has to be a number!")
         continue
     startY = input("Enter starting y-coordinate: ")
-    if not startY.isdigit():
+    if startY.isalpha():
         print("Error! Input has to be a number!")
         continue
     endX = input("Enter ending x-coordinate: ")
-    if not endX.isdigit():
+    if endX.isalpha():
         print("Error! Input has to be a number!")
         continue
     endY = input("Enter ending y-coordinate: ")
-    if not endY.isdigit():
+    if endY.isalpha():
         print("Error! Input has to be a number!")
         continue
 
