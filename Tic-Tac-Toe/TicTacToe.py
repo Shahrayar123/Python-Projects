@@ -21,7 +21,7 @@ def printBoard(board):
     print("   |   |   ")
 
 def isBoardFull(board):
-    if board.count(" ") > 1:
+    if board.count(" ") > 0:
         return False
     else:
         return True
@@ -64,13 +64,13 @@ def compMove():
                 move = i
                 return move
 
-    cornorOpen = []
+    cornerOpen = []
     for i in possibleMoves:
         if i in [1,3,7,9]:
-            cornorOpen.append(i)
+            cornerOpen.append(i)
 
-    if len(cornorOpen) > 0:
-        move = selectRandom(cornorOpen)
+    if len(cornerOpen) > 0:
+        move = selectRandom(cornerOpen)
         return move
 
     if 5 in possibleMoves:
@@ -103,17 +103,18 @@ def main():
         if not(isWinner(board, "O")):
             userMove()
             printBoard(board)
-
+            
         else:
-            print("Sorry you loose! ")
+            print("Sorry you lose! ")
             break
 
 
         if not(isWinner(board, "X")):
             move = compMove()
-
-            if move == 0:
-                print("Tie game")
+            
+            if move == 0 or move == None:
+                print("\nTie Game!")
+                break
 
             else:
                 insertLetter("O", move)
@@ -124,8 +125,8 @@ def main():
             print("You win! ")
             break
 
-    if isBoardFull(board):
-        print("\nGame tie")
+
+
 
 
 while True:
