@@ -64,6 +64,7 @@ def compMove():
                 move = i
                 return move
 
+
     cornorOpen = []
     for i in possibleMoves:
         if i in [1,3,7,9]:
@@ -112,6 +113,14 @@ def main():
         if not(isWinner(board, "X")):
             move = compMove()
 
+            # Fixed Draw
+            if move is None or move == 0:
+                print("Tie game")
+                break  # Game finish
+            else:
+                insertLetter("O", move)
+                printBoard(board)
+        
             if move == 0:
                 print("Tie game")
 
