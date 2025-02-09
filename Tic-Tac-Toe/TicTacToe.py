@@ -109,7 +109,9 @@ def main():
             break
 
 
-        if not(isWinner(board, "X")):
+        if not(isWinner(board, "X")):            
+            if isBoardFull(board):
+                break
             move = compMove()
 
             if move == 0:
