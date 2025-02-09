@@ -1,62 +1,58 @@
-import random       # also do with numpy (from numpy import random)
-
-
-# ------------ function definition
+import random
 
 def roll_dice():
+    print("<<DICE SIMULATOR>>\n")
     number = random.randint(1,6)
     if number == 1:
         print("-----------")
         print("|         |")
-        print("|    0    |")
+        print("|    o    |")
         print("|         |")
         print("-----------")
 
     elif number == 2:
         print("-----------")
         print("|         |")
-        print("| 0     0 |")
+        print("| o     o |")
         print("|         |")
         print("-----------")
 
     elif number == 3:
         print("-----------")
-        print("|    0    |")
-        print("|    0    |")
-        print("|    0    |")
+        print("|         |")
+        print("| o  o  o |")
+        print("|         |")
         print("-----------")
 
     elif number == 4:
         print("-----------")
-        print("| 0     0 |")
+        print("| o     o |")
         print("|         |")
-        print("| 0     0 |")
+        print("| o     o |")
         print("-----------")
 
     elif number == 5:
         print("-----------")
-        print("| 0     0 |")
-        print("|    0    |")
-        print("| 0     0 |")
+        print("| o     o |")
+        print("|    o    |")
+        print("| o     o |")
         print("-----------")
 
     elif number == 6:
         print("-----------")
-        print("| 0  0  0 |")
+        print("| o  o  o |")
         print("|         |")
-        print("| 0  0  0 |")
+        print("| o  o  o |")
         print("-----------")
-
-
-print("                         Dics Simulator                  ")
-x = 'y'
-while x.lower() == "y":
-    roll_dice()             # function call
-    choice = input("Do you want to play again (y/n): ")       # choice from user
-
-    if choice.lower() == "n":
+        
+    choice = input("\nDo you want to play again? - ")
+    if choice.lower() == "n" or choice.lower() == "no":
         exit(0)
-
+    else:
+        print("-"*65)
+        roll_dice()
+        
+roll_dice()
 
 
 
