@@ -65,7 +65,8 @@ def play_game():
             print(f'Congratulations! You guessed the number in {attempts} attempts.')
             keep_playing = input('Would you like to play again? (y/n): ')
             if keep_playing.lower() == 'y':
-                play_game()
+                start()
+                continue
             elif keep_playing.lower() == 'n':
                 print("Thanks for playing! Have a great day!")
                 break
