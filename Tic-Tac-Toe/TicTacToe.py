@@ -1,19 +1,20 @@
 board = [' ' for i in range(10)]
+player_score = 0
+computer_score = 0
 
-def insertLetter(letter,pos):
+def insertLetter(letter, pos):
     board[pos] = letter
 
-
-def spaceIsfree(pos):
-   return board[pos] == ' '
+def spaceIsFree(pos):
+    return board[pos] == ' '
 
 def printBoard(board):
     print("   |   |   ")
-    print(" " +board[1] + " | "+ board[2]+ " | " + board[3])
+    print(" " + board[1] + " | " + board[2] + " | " + board[3])
     print("   |   |   ")
     print("-----------")
     print("   |   |   ")
-    print(" " +board[4] + " | "+ board[5]+ " | " + board[6])
+    print(" " + board[4] + " | " + board[5] + " | " + board[6])
     print("   |   |   ")
     print("-----------")
     print("   |   |   ")
@@ -21,112 +22,94 @@ def printBoard(board):
     print("   |   |   ")
 
 def isBoardFull(board):
-    if board.count(" ") > 1:
-        return False
-    else:
-        return True
+    return board.count(" ") <= 1
 
-def isWinner(b,l):    # b = board, l = letter
-    # check all possibilities
-    return ((b[1] == l and b[2] == l and b[3] == l) or (b[4] == l and b[5] == l and b[6] == l) or (b[7] == l and b[8] == l and b[9] == l) or (b[1] == l and b[4] == l and b[7] == l) or (b[2] == l and b[5] == l and b[8] == l) or (b[3] == l and b[6] == l and b[9] == l) or (b[1] == l and b[5] == l and b[9] == l) or (b[3] == l and b[5] == l and b[7] == l))
+def isWinner(b, l):  # b = board, l = letter
+    return ((b[1] == l and b[2] == l and b[3] == l) or 
+            (b[4] == l and b[5] == l and b[6] == l) or 
+            (b[7] == l and b[8] == l and b[9] == l) or 
+            (b[1] == l and b[4] == l and b[7] == l) or 
+            (b[2] == l and b[5] == l and b[8] == l) or 
+            (b[3] == l and b[6] == l and b[9] == l) or 
+            (b[1] == l and b[5] == l and b[9] == l) or 
+            (b[3] == l and b[5] == l and b[7] == l))
 
 def userMove():
     run = True
-
     while run:
         pos = input("Enter a position between 1 to 9: ")
-
         try:
             pos = int(pos)
-            if (pos > 0) and (pos < 10):
-                if spaceIsfree(pos):
+            if 1 <= pos <= 9:
+                if spaceIsFree(pos):
                     run = False
-                    insertLetter("X" , pos)
+                    insertLetter("X", pos)
                 else:
-                    print("Sorry this space is occupied")
-
+                    print("Sorry, this space is occupied.")
             else:
-                print("Please enter a number range between 1 to 9")
-
+                print("Please enter a number between 1 to 9.")
         except:
-            print("Please enter a number ")
+            print("Please enter a valid number.")
 
 def compMove():
-    possibleMoves = [x for x,letter in enumerate(board) if letter == " " and x != 0]
+    possibleMoves = [x for x, letter in enumerate(board) if letter == " " and x != 0]
     move = 0
 
-    for let in ['O','X']:
+    for let in ['O', 'X']:
         for i in possibleMoves:
             boardCopy = board[:]
             boardCopy[i] = let
-
-            if isWinner(boardCopy,let):
+            if isWinner(boardCopy, let):
                 move = i
                 return move
 
-    cornorOpen = []
-    for i in possibleMoves:
-        if i in [1,3,7,9]:
-            cornorOpen.append(i)
-
-    if len(cornorOpen) > 0:
-        move = selectRandom(cornorOpen)
-        return move
+    cornerOpen = [i for i in possibleMoves if i in [1, 3, 7, 9]]
+    if cornerOpen:
+        return selectRandom(cornerOpen)
 
     if 5 in possibleMoves:
-        move = 5
-        return move
+        return 5
 
-    edgeOpen = []
-    for i in possibleMoves:
-        if i in [2,4,6,8]:
-            edgeOpen.append(i)
+    edgeOpen = [i for i in possibleMoves if i in [2, 4, 6, 8]]
+    if edgeOpen:
+        return selectRandom(edgeOpen)
 
-
-    if len(edgeOpen) > 0:
-        move = selectRandom(edgeOpen)
-        return move
-
-def selectRandom(list_):
+def selectRandom(lst):
     import random
-    ln = len(list_)
-    r = random.randrange(0,ln)
-
-    return list_[r]
-
+    return random.choice(lst)
 
 def main():
-    print("Welcome to the tic tac toe game\n")
+    global player_score, computer_score  # Use global variables for score tracking
+    print("Welcome to the Tic-Tac-Toe game!\n")
     printBoard(board)
 
-    while not(isBoardFull(board)):
-        if not(isWinner(board, "O")):
+    while not isBoardFull(board):
+        if not isWinner(board, "O"):
             userMove()
             printBoard(board)
-
         else:
-            print("Sorry you loose! ")
+            computer_score += 1
+            print(f"Computer wins! 🤖 Your Score: {player_score} | Computer Score: {computer_score}")
             break
 
-
-        if not(isWinner(board, "X")):
+        if not isWinner(board, "X"):
             move = compMove()
-
             if move == 0:
-                print("Tie game")
-
+                print("Tie game!")
+                break
             else:
                 insertLetter("O", move)
-                print(f"Computer place O on position {move}")
+                print(f"Computer placed O on position {move}")
                 printBoard(board)
-
         else:
-            print("You win! ")
+            player_score += 1
+            print(f"You win! 🎉 Your Score: {player_score} | Computer Score: {computer_score}")
             break
 
     if isBoardFull(board):
-        print("\nGame tie")
-
+        print("\nGame tied!")
+    
+    print(f"Current Score -> You: {player_score} | Computer: {computer_score}")
 
 while True:
     choice = input("Do you want to play a game (Y/N): ")
@@ -135,4 +118,5 @@ while True:
         print("-----------------------------------------")
         main()
     else:
+        print(f"Final Score -> You: {player_score} | Computer: {computer_score}")
         break
