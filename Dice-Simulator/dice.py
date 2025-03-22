@@ -48,7 +48,7 @@ def roll_dice():
         print("-----------")
 
 
-print("                         Dics Simulator                  ")
+print("                         Dice Simulator                  ")
 x = 'y'
 while x.lower() == "y":
     roll_dice()             # function call
