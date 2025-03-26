@@ -4,31 +4,37 @@ This program allows you to create a channel in the local network for communicati
 
 # Usage
 
-1. Install the required libraries listed in `requirements.txt` file using `pip`:
+1. If you don't already have tkinter installed, you need to download it. tkinter is a standard GUI library for Python, and it's usually included with Python installations. However, if you don't have it installed, you can install it using your package manager. For example, on Ubuntu or Debian-based systems, you can use:
+```
+sudo apt-get install python3-tk
+```
+
+
+2. Install the required libraries listed in `requirements.txt` file using `pip`:
 
 ```
 pip3 install -r requirements.txt
 ```
 
-2. Run `main.py` to create server.
+3. Run `main.py` to create a server:
 
 ```
 python3 main.py
 ```
-after running the script print S parameter(to create server)
+Once the script is executed, you'll be prompted to input S on the terminal to create the server.
 
-!!! be sure to save the key that the program will give you !!!
+**Important:** Make sure to save the key provided by the program. You'll need this key to connect to the server or to allow others to join your channel.
 
 
 <img src="https://github.com/p4sh4bsc/Python-Projects/blob/local_chat/Local-Chat/src/Server.gif" width="500" height="300" />
 
 
 
-3. Also run `main.py`, but now we gonna connetct to the server as client.
+4. Run `main.py` again from another terminal, but this time we're going to connect to the server as a client:
+
 ```
 python3 main.py
 ```
-after running the script print C parameter(for connection to the server)
 
 
 
@@ -36,7 +42,7 @@ after running the script print C parameter(for connection to the server)
 
 
 
-4. Start chatting with your friends!
+5. Start chatting with your friends!
 <img src="https://github.com/p4sh4bsc/Python-Projects/blob/local_chat/Local-Chat/src/GUI.png" width="500" height="300" />
 
 
