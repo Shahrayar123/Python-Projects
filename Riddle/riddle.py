@@ -23,6 +23,11 @@ for riddle_key in riddle_keys:
         print("Correct!")
         score += 1
     else:
-        print("Wrong answer. Correct answer: " + riddles[riddle_key])
+        print("Wrong.")
+        again = input("Try again? Y/N ")
+        if again.lower() == "y": 
+            continue
+        elif again.lower() == "n":
+            print("Quitter!! Correct answer was: " + riddles[riddle_key])
 
 print("Game over! Your score is: " + str(score))
