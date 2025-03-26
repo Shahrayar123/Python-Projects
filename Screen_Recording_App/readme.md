@@ -14,7 +14,7 @@ Make sure you have the following libraries installed:
 You can install these libraries using pip:
 
 
-pip install opencv-python numpy pyautogui
+pip install -r requirements.txt
 
 
 ## How to Use

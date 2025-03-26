@@ -12,11 +12,12 @@ In this Python implementation, we've created a grid of cells on the screen. You 
 ## Prerequisites
 
 - Python 3.x
-- Pygame library
-- You can install Pygame using pip:
+- Pygame
+- Numpy
+- You can install it using pip:
 
 
-pip install pygame
+pip install -r requirements.txt
 
 
 ## Usage

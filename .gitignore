@@ -1,0 +1,10 @@
+.DS_Store
+__pycache__/
+.idea/
+
+venv/
+.venv/
+
+*.db
+*.s3db
+*.sqlite3

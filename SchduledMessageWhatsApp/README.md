@@ -1,3 +1,3 @@
 run the following command in cmd before running this file!
 
-### pip install pywhatkit
+### pip install -r requirements.txt
