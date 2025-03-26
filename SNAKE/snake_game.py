@@ -72,12 +72,11 @@ def food_collision():
         return True
     return False
  
-# Random position for food
 def get_random_food_position():
-    x = random.randint(- w / 2 + food_size, w / 2 - food_size)
-    y = random.randint(- h / 2 + food_size, h / 2 - food_size)
+    x = random.randint(int(-w / 2 + food_size), int(w / 2 - food_size))
+    y = random.randint(int(-h / 2 + food_size), int(h / 2 - food_size))
     return (x, y)
- 
+
 
 def get_distance(pos1, pos2):
     x1, y1 = pos1
