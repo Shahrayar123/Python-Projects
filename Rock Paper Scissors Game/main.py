@@ -13,11 +13,11 @@ def game():
         print("Decide your move, enter \"R\" for Rock, \"S\" for Scissors and \"P\"for Paper")
         tempVal=input();
     sleep(0.13)
-    if tempVal == "R" or tempVal == "r":
+    if tempVal in "Rr":
         Pmove=1
-    elif tempVal == "P" or tempVal == "p":
+    elif tempVal in "Pp":
         Pmove=2
-    elif tempVal == "S" or tempVal == "s":
+    elif tempVal in "Ss":
         Pmove=3
     else:
         print("Custom_ERROR-01 : can't recognize user's input")
