@@ -1,2 +1,2 @@
-# Projeto1
-Projeto para definir quantidade de alunos aprovados/reprovados com base nas notas inseridas pelo usuário.
+# Projetos
+Repositório para compartilhamento e estudo de programas básicos em python.
