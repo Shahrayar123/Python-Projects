@@ -3,7 +3,6 @@ board = [' ' for i in range(10)]
 def insertLetter(letter,pos):
     board[pos] = letter
 
-
 def spaceIsfree(pos):
    return board[pos] == ' '
 
@@ -108,6 +107,10 @@ def main():
             print("Sorry you loose! ")
             break
 
+        # After user moves, checks if the board is full
+        if isBoardFull(board):
+            print("\nGame tie")
+            break
 
         if not(isWinner(board, "X")):
             move = compMove()
@@ -121,12 +124,8 @@ def main():
                 printBoard(board)
 
         else:
-            print("You win! ")
+            print("You win!")
             break
-
-    if isBoardFull(board):
-        print("\nGame tie")
-
 
 while True:
     choice = input("Do you want to play a game (Y/N): ")
