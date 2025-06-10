@@ -54,7 +54,6 @@ def userMove():
 def compMove():
     possibleMoves = [x for x,letter in enumerate(board) if letter == " " and x != 0]
     move = 0
-
     for let in ['O','X']:
         for i in possibleMoves:
             boardCopy = board[:]
@@ -116,10 +115,10 @@ def main():
                 print("Tie game")
 
             else:
-                insertLetter("O", move)
-                print(f"Computer place O on position {move}")
+                if isBoardFull(board)==False:
+                    insertLetter("O", move)
+                    print(f"Computer place O on position {move}")
                 printBoard(board)
-
         else:
             print("You win! ")
             break
