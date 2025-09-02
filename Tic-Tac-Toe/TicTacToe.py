@@ -53,6 +53,9 @@ def userMove():
 
 def compMove():
     possibleMoves = [x for x,letter in enumerate(board) if letter == " " and x != 0]
+    if len(possibleMoves) == 0:
+        return None
+
     move = 0
 
     for let in ['O','X']:
@@ -112,8 +115,8 @@ def main():
         if not(isWinner(board, "X")):
             move = compMove()
 
-            if move == 0:
-                print("Tie game")
+            if move == 0 or move is None:
+                pass
 
             else:
                 insertLetter("O", move)
