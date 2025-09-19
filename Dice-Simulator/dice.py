@@ -46,17 +46,23 @@ def roll_dice():
         print("|         |")
         print("| 0  0  0 |")
         print("-----------")
+    return number
 
-
-print("                         Dics Simulator                  ")
+print("                         Dice Simulator                  ")
+score=0
 x = 'y'
 while x.lower() == "y":
-    roll_dice()             # function call
+   
+    rolled_number=roll_dice()     #function called
+    score+=rolled_number
+    print("Your Score: ",score)
     choice = input("Do you want to play again (y/n): ")       # choice from user
 
     if choice.lower() == "n":
+        print('Your final score: ',score)
         exit(0)
-
-
-
-
+    elif choice.lower()=='y':
+        continue
+    else:
+       print("Invalid Input! Exiting program.")
+    exit(0)
