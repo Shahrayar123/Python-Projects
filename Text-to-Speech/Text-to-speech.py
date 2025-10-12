@@ -8,7 +8,6 @@ engine = pyttsx3.init(driverName='espeak')
 def speaknow():
     engine.say(textv.get())
     engine.runAndWait()
-    engine.stop()
 
 root=Tk()
 
