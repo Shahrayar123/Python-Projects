@@ -64,13 +64,13 @@ def compMove():
                 move = i
                 return move
 
-    cornorOpen = []
+    cornerOpen = []
     for i in possibleMoves:
         if i in [1,3,7,9]:
-            cornorOpen.append(i)
+            cornerOpen.append(i)
 
-    if len(cornorOpen) > 0:
-        move = selectRandom(cornorOpen)
+    if len(cornerOpen) > 0:
+        move = selectRandom(cornerOpen)
         return move
 
     if 5 in possibleMoves:
@@ -86,6 +86,8 @@ def compMove():
     if len(edgeOpen) > 0:
         move = selectRandom(edgeOpen)
         return move
+
+    return move
 
 def selectRandom(list_):
     import random
