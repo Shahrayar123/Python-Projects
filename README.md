@@ -76,4 +76,6 @@ Contributions are always welcome!
 
 See [GitHub Contribution Documentation](https://docs.github.com/en/get-started/quickstart/contributing-to-projects) for more reference.
 
+This project demonstrates collaborative GitHub workflow using fork and pull requests.
+
 
