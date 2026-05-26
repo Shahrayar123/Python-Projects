@@ -10,7 +10,7 @@ A Hub of Python Projects for Beginners.
 Welcome aboard fellow developer, this repository is intended for beginners who can use it for project building, open source contribution and get the most from it.
 If you are new to open source then do consider this repository to start with.
 
-There are various projects under this repository which will be helpful for you get familiar with Python programming.
+There are various projects under this repository which will be helpful for you get familiar with Python programming!
 
 
 
@@ -55,18 +55,17 @@ Contributions are always welcome!
 
 
 ### Instructions
-1. Fork this repository
+1. Fork this repository!
 
-2. Clone your forked repository
+2. Clone your forked repository!
 
-3. Add your scripts along with description
+3. Add your scripts along with description!
 
-4. Commit and push
+4. Commit and push!
 
-5. Create a pull request
+5. Create a pull request!
 
-6. Star this repository
-
+6. Star this repository!
 7. Wait for pull request to merge
 
 
