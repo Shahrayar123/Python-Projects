@@ -26,9 +26,23 @@ def isBoardFull(board):
     else:
         return True
 
-def isWinner(b,l):    # b = board, l = letter
-    # check all possibilities
-    return ((b[1] == l and b[2] == l and b[3] == l) or (b[4] == l and b[5] == l and b[6] == l) or (b[7] == l and b[8] == l and b[9] == l) or (b[1] == l and b[4] == l and b[7] == l) or (b[2] == l and b[5] == l and b[8] == l) or (b[3] == l and b[6] == l and b[9] == l) or (b[1] == l and b[5] == l and b[9] == l) or (b[3] == l and b[5] == l and b[7] == l))
+WINNING_COMBINATIONS = [
+    (1, 2, 3),
+    (4, 5, 6),
+    (7, 8, 9),
+    (1, 4, 7),
+    (2, 5, 8),
+    (3, 6, 9),
+    (1, 5, 9),
+    (3, 5, 7)
+]
+
+
+def isWinner(board, letter):
+    for combo in WINNING_COMBINATIONS:
+        if all(board[pos] == letter for pos in combo):
+            return True
+    return False
 
 def userMove():
     run = True
