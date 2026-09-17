@@ -1,0 +1,8 @@
+Basic Requirements
+numpy
+pandas
+scikit-learn
+matplotlib
+
+# For deployment (optional)
+streamlit
