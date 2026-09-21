@@ -53,7 +53,11 @@ def userMove():
 
 def compMove():
     possibleMoves = [x for x,letter in enumerate(board) if letter == " " and x != 0]
+
     move = 0
+    
+    if len(possibleMoves) == 0:
+        return move
 
     for let in ['O','X']:
         for i in possibleMoves:
