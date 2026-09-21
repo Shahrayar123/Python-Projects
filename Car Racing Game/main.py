@@ -42,6 +42,20 @@ class Car:
         self.x += self.speed_x
         self.y += self.speed_y
 
+        # **Horizontal movement limit (in the road)**
+        # The road are is SCREEN_WIDTH // 4 a SCREEN_WIDTH // 2
+        if self.x < SCREEN_WIDTH // 4:  # Left limit in the road
+            self.x = SCREEN_WIDTH // 4
+        if self.x + CAR_WIDTH > SCREEN_WIDTH // 1.17:  # Right limit in the road
+            self.x = SCREEN_WIDTH // 1.17 - CAR_WIDTH
+
+        # **Vertical movement limit (in the window)**
+        if self.y < 0:  # Upper limit in the window
+            self.y = 0
+        if self.y + CAR_HEIGHT > SCREEN_HEIGHT:  # Lower limit in the window
+            self.y = SCREEN_HEIGHT - CAR_HEIGHT
+
+
     def draw(self):
         screen.blit(self.image, (self.x, self.y))
 
