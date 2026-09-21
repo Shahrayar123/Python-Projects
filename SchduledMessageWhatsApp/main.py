@@ -1,5 +1,4 @@
 import pywhatkit
-import datetime
 
 num = input("Enter WhatsApp Number of Sender (without Country Code) : ")
 msg = input("Enter Your Message : ")
