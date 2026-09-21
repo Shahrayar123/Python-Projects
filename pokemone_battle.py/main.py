@@ -124,7 +124,7 @@ class Pokemon:
                 self.health += "="
 
             time.sleep(1)
-            print(f"{self.name}\t\tHLTH\t{self.health}")
+            print(f"\n{self.name}\t\tHLTH\t{self.health}")
             print(f"{Pokemon2.name}\t\tHLTH\t{Pokemon2.health}\n")
             time.sleep(.5)
 
