@@ -3,7 +3,8 @@ board = [' ' for i in range(10)]
 def insertLetter(letter,pos):
     board[pos] = letter
 
-
+# Setting out the base plate for the game
+    
 def spaceIsfree(pos):
    return board[pos] == ' '
 
@@ -20,6 +21,8 @@ def printBoard(board):
     print(" " + board[7] + " | " + board[8] + " | " + board[9])
     print("   |   |   ")
 
+# Checking if the board is full or not
+    
 def isBoardFull(board):
     if board.count(" ") > 1:
         return False
@@ -27,7 +30,7 @@ def isBoardFull(board):
         return True
 
 def isWinner(b,l):    # b = board, l = letter
-    # check all possibilities
+    # check all winning possibilities
     return ((b[1] == l and b[2] == l and b[3] == l) or (b[4] == l and b[5] == l and b[6] == l) or (b[7] == l and b[8] == l and b[9] == l) or (b[1] == l and b[4] == l and b[7] == l) or (b[2] == l and b[5] == l and b[8] == l) or (b[3] == l and b[6] == l and b[9] == l) or (b[1] == l and b[5] == l and b[9] == l) or (b[3] == l and b[5] == l and b[7] == l))
 
 def userMove():
