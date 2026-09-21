@@ -12,8 +12,11 @@ print(mylist)
 # for separating the name from their extensions
 for cu_img in mylist:
     current_Img = cv2.imread(f'{path}/{cu_img}')
-    Images.append(current_Img)
-    PersonName.append(os.path.splitext(cu_img)[0])
+    if current_Img is not None:
+        Images.append(current_Img)
+        PersonName.append(os.path.splitext(cu_img)[0])
+    else:
+        print (f"Warning: {cu_img} could not be read.")
 print(PersonName)
 
 
@@ -21,22 +24,28 @@ def encodings(images):
     encodelist = []
     for img in images:
         img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-        encode = face_recognition.face_encodings(img)[0]
-        encodelist.append(encode)
+        encodings = face_recognition.face_encodings(img)
+        if encodings:
+            encodelist.append(encodings[0])
+        else:
+            print ("Warning: No face encoding found for image")
     return encodelist
-
 
 encode_list_Known = encodings(Images)
 print("ALL ENCODING FOUND!!!")
 
 
 def attendance(name):
+    file_exists = os.path.isfile('Attendance.cv')
     with open('Attendence.csv', 'r+') as f:
-        myDataList = f.readlines()
-        nameList = []
-        for line in myDataList:
-            entry = line.split(',')
-            nameList.append(entry[0])
+        if file_exists:
+            f.seek(0)
+            myDataList = f.readlines()
+        else:
+            myDataList = []
+      
+        
+        nameList = [ine.split(',')[0] for line in myDataList]
         if name not in nameList:
             time_now = datetime.now()
             tStr = time_now.strftime('%H:%M:%S')
@@ -46,9 +55,19 @@ def attendance(name):
 
 cap = cv2.VideoCapture(0)
 
+if not cap.isOpened():
+    print("Error: Could not access the camera.")
+    exit()
+
+
 while True:
     ret, frame = cap.read()
-    faces = cv2.resize(frame, (0, 0), None, 0.25, 0.25)
+    if not ret:
+        print("Error: Failed to capture image.")
+        break
+    
+    
+    frame = cv2.resize(frame, (0, 0), None, 0.25, 0.25)
     faces = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
 
     faces_currentframe = face_recognition.face_locations(faces)
