@@ -8,9 +8,7 @@ This is a Python script that uses the OpenCV and face_recognition libraries to c
 
 Before running the code, you need to install the required Python libraries. You can install them using pip:
 
-- pip install opencv-python
-- pip install numpy
-- pip install face-recognition
+- pip install -r requirements.txt
 
 
 ## Usage
