@@ -46,6 +46,11 @@ def attendance(name):
 
 cap = cv2.VideoCapture(0)
 
+# Check if the webcam is opened successfully
+if not cap.isOpened():
+    print("Error: Could not access the camera.")
+    exit()
+
 while True:
     ret, frame = cap.read()
     faces = cv2.resize(frame, (0, 0), None, 0.25, 0.25)
