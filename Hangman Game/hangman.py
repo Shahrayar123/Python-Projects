@@ -43,7 +43,7 @@ def hangman():
                 main = main +"_"+" "
 
         if main == word:
-            print("Letter is: "+ main)
+            print(f"Letter is: {main}")
             print("You win! ")
             break
 
@@ -67,44 +67,51 @@ def hangman():
                 print("8 turns left")
                 print("\n---------------------------- ")
                 print("      O     ")
+
             if chance == 7:
                 print("7 turns left")
                 print("\n---------------------------- ")
                 print("      O     ")
                 print("      |      ")
+
             if chance == 6:
                 print("6 turns left")
                 print("\n---------------------------- ")
                 print("      O     ")
                 print("      |      ")
                 print("     /       ")
+
             if chance == 5:
                 print("5 turns left")
                 print("\n---------------------------- ")
                 print("      O     ")
                 print("      |      ")
                 print("     / \     ")
+
             if chance == 4:
                 print("4 turns left")
                 print("\n---------------------------- ")
                 print("     \O     ")
                 print("      |      ")
                 print("     / \     ")
+
             if chance == 3:
                 print("3 turns left")
                 print("\n---------------------------- ")
                 print("     \O/   ")
                 print("      |      ")
                 print("     / \     ")
+
             if chance == 2:
                 print("2 turns left")
                 print("\n---------------------------- ")
                 print("     \O/  |  ")
                 print("      |      ")
                 print("     / \     ")
+
             if chance == 1:
                 print("1 turns left")
-                print("last breating...")
+                print("last chance...")
                 print("\n---------------------------- ")
                 print("     \O/ __|  ")
                 print("      |      ")
@@ -122,8 +129,9 @@ def hangman():
 
 name = input("Hey there! What is your name: ")
 
-if checkName(name):
-    print(name+" lets play a game")
-    hangman()
-else:
-    pass
+if __name__ == '__main__':
+    if checkName(name):
+        print(name+" lets play a game")
+        hangman()
+    else:
+        pass
