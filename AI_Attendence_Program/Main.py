@@ -4,19 +4,23 @@ import face_recognition
 import os
 from datetime import datetime
 
+# Path to the images
 path = 'Images'
+
+# Initialize lists for images and names
 Images = []
 PersonName = []
 mylist = os.listdir(path)
 print(mylist)
-# for separating the name from their extensions
+
+# Load images and extract names
 for cu_img in mylist:
     current_Img = cv2.imread(f'{path}/{cu_img}')
     Images.append(current_Img)
     PersonName.append(os.path.splitext(cu_img)[0])
 print(PersonName)
 
-
+# Function to encode faces
 def encodings(images):
     encodelist = []
     for img in images:
@@ -25,11 +29,11 @@ def encodings(images):
         encodelist.append(encode)
     return encodelist
 
-
+# Get encodings of all known faces
 encode_list_Known = encodings(Images)
 print("ALL ENCODING FOUND!!!")
 
-
+# Function to record attendance
 def attendance(name):
     with open('Attendence.csv', 'r+') as f:
         myDataList = f.readlines()
@@ -43,14 +47,28 @@ def attendance(name):
             dStr = time_now.strftime('%d/%m/%Y')
             f.writelines(f'\n{name},{tStr},{dStr}')
 
-
+# Access the webcam
 cap = cv2.VideoCapture(0)
 
+# Check if the webcam is accessible
+if not cap.isOpened():
+    print("Error: Camera not accessible")
+    exit()
+
+# Loop to capture frames and detect faces
 while True:
     ret, frame = cap.read()
-    faces = cv2.resize(frame, (0, 0), None, 0.25, 0.25)
-    faces = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    
+    # If frame is read correctly, ret will be True
+    if not ret:
+        print("Failed to grab frame")
+        break
 
+    # Resize and convert frame for faster processing
+    faces = cv2.resize(frame, (0, 0), None, 0.25, 0.25)
+    faces = cv2.cvtColor(faces, cv2.COLOR_BGR2RGB)
+
+    # Get face locations and encodings in the current frame
     faces_currentframe = face_recognition.face_locations(faces)
     encode_currentframe = face_recognition.face_encodings(faces, faces_currentframe)
 
@@ -69,8 +87,13 @@ while True:
             cv2.putText(frame, name, (x1 + 6, y2 - 6), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 255, 255), 2)
             attendance(name)
 
+    # Display the frame with the rectangle and name
     cv2.imshow("camera", frame)
-    if cv2.waitKey(10) == 13:
+
+    # Break the loop if the Enter key is pressed
+    if cv2.waitKey(10) == 13:  # ASCII code for Enter key
         break
+
+# Release the camera and close windows
 cap.release()
 cv2.destroyAllWindows()
