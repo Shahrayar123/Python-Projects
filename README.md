@@ -38,6 +38,7 @@ This repository has the following Projects.
 - [Conway's Game of Life](https://github.com/Shahrayar123/Python-Projects/tree/master/Conway's%20Game%20of%20Life)
 - [Dice-Simulator](https://github.com/Shahrayar123/Python-Projects/tree/master/Dice-Simulator)
 - [Dictionary-App](https://github.com/Shahrayar123/Python-Projects/tree/master/Dictionary-App)
+- [Folder Organizer](https://github.com/Shahrayar123/Python-Projects/tree/master/Folder%20Organizer)
 - [Riddle](https://github.com/Shahrayar123/Python-Projects/tree/master/Riddle)
 - [SchduledMessageWhatsApp](https://github.com/Shahrayar123/Python-Projects/tree/master/SchduledMessageWhatsApp)
 - [Screen_Recording_App](https://github.com/Shahrayar123/Python-Projects/tree/master/Screen_Recording_App)
