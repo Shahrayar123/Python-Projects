@@ -16,8 +16,8 @@ To get started, you'll need to have Python and the following libraries installed
 You can install these libraries using pip:
 
 
-pip install opencv-python
-pip install dlib
+`pip install opencv-python`
+`pip install dlib`
 
 
 ## Usage
@@ -26,7 +26,7 @@ pip install dlib
 - Open a terminal or command prompt and navigate to the directory containing the script.
 - Run the script using the following command:
 
-python face_detection.py
+`python face_detection.py`
 
 The script will open your webcam and start detecting faces in real-time. Detected faces will be highlighted with rectangles, and a number will be displayed on each detected face to indicate its order.
 

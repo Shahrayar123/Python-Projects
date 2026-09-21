@@ -16,14 +16,16 @@ In this Python implementation, we've created a grid of cells on the screen. You 
 - You can install Pygame using pip:
 
 
-pip install pygame
+`pip install pygame`
 
 
 ## Usage
 
 - Clone or download this repository to your local machine.
 - Open a terminal or command prompt and navigate to the directory containing the code.
-- Run the game by executing python conways_game_of_life.py.
+- Run the game by executing:
+    
+     `python conways_game_of_life.py`
 
 
 ## Controls
