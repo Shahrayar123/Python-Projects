@@ -71,52 +71,55 @@ class Card:
 4. Close account
 5. Log out
 0. Exit""")
-            i = int(input())
-            if i == 1:
-                print('\nBalance: ', self.balance)
-                print()
-            elif i == 2:
-                print('\nEnter income:')
-                amount = int(input())
-                self.balance += amount
-                cur.execute(f'UPDATE card SET balance = {self.balance} WHERE number = {self.login_card};')
-                conn.commit()
-                print('Income was added!')
-            elif i == 3:
-                print('\nTransfer\nEnter card number:')
-                receiver_card = input()
-                cur.execute(f'SELECT id, number,pin,balance FROM card WHERE number = {receiver_card};')
+            try: 
+                i = int(input())
+                if i == 1:
+                    print('\nBalance: ', self.balance)
+                    print()
+                elif i == 2:
+                    print('\nEnter income:')
+                    amount = int(input())
+                    self.balance += amount
+                    cur.execute(f'UPDATE card SET balance = {self.balance} WHERE number = {self.login_card};')
+                    conn.commit()
+                    print('Income was added!')
+                elif i == 3:
+                    print('\nTransfer\nEnter card number:')
+                    receiver_card = input()
+                    cur.execute(f'SELECT id, number,pin,balance FROM card WHERE number = {receiver_card};')
 
-                if not self.luhn_2(receiver_card):
-                    print('Probably you made a mistake in the card number. Please try again!')
-                elif not cur.fetchone():
-                    print('Such a card does not exist.')
-                else:
-                    transfer = int(input("Enter how much money you want to transfer:\n"))
-                    if transfer > self.balance:
-                        print("Not enough money!")
+                    if not self.luhn_2(receiver_card):
+                        print('Probably you made a mistake in the card number. Please try again!')
+                    elif not cur.fetchone():
+                        print('Such a card does not exist.')
                     else:
-                        self.balance -= transfer
-                        cur.execute(f'UPDATE card SET balance = {self.balance} WHERE number = {self.login_card};')
-                        self.receiver_balance += transfer
-                        cur.execute(f'UPDATE card SET balance = {self.receiver_balance} WHERE number = {receiver_card};')
-                        cur.execute(f'SELECT * FROM card WHERE number = {self.login_card}')
-                        print(cur.fetchone())
-                        print("Success!")
-                        conn.commit()
+                        transfer = int(input("Enter how much money you want to transfer:\n"))
+                        if transfer > self.balance:
+                            print("Not enough money!")
+                        else:
+                            self.balance -= transfer
+                            cur.execute(f'UPDATE card SET balance = {self.balance} WHERE number = {self.login_card};')
+                            self.receiver_balance += transfer
+                            cur.execute(f'UPDATE card SET balance = {self.receiver_balance} WHERE number = {receiver_card};')
+                            cur.execute(f'SELECT * FROM card WHERE number = {self.login_card}')
+                            print(cur.fetchone())
+                            print("Success!")
+                            conn.commit()
 
-            elif i == 4:
-                cur.execute(f"DELETE FROM card WHERE number = {self.login_card}")
-                conn.commit()
-                print('\nThe account has been closed!')
-                break
-            elif i == 5:
-                print("\nYou have successfully log out!")
-                break
-            elif i == 0:
-                print("\nBye!")
-                conn.close()
-                sys.exit()
+                elif i == 4:
+                    cur.execute(f"DELETE FROM card WHERE number = {self.login_card}")
+                    conn.commit()
+                    print('\nThe account has been closed!')
+                    break
+                elif i == 5:
+                    print("\nYou have successfully log out!")
+                    break
+                elif i == 0:
+                    print("\nBye!")
+                    conn.close()
+                    sys.exit()
+            except ValueError:
+                print("Invalid input")
 
     def luhn_2(self, num):
         num2 = num[:]
@@ -169,16 +172,19 @@ class Card:
             print("""\n1. Create an account
 2. Log into account
 0. Exit""")
-            i = int(input())
-            if i == 1:
-                self.create_account()
-            elif i == 2:
-                self.log_in()
-            elif i == 0:
-                conn.close()
-                print("\nBye!")
-                break
-            else:
+            try: 
+                i = int(input())
+                if i == 1:
+                    self.create_account()
+                elif i == 2:
+                    self.log_in()
+                elif i == 0:
+                    conn.close()
+                    print("\nBye!")
+                    break
+                else:
+                    print("Invalid input")
+            except ValueError:
                 print("Invalid input")
                 
 
